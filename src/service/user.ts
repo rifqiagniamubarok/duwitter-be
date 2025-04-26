@@ -109,8 +109,8 @@ export const login_user = async (request: { email: string; password: string | nu
       },
     });
 
+    // is profile required for checking if profile has been fullfil or not
     let is_profile_required = false;
-
     if (!user.country || !user.city || !user.birth_date || !user.birth_place || !user.q1 || !user.q2) {
       is_profile_required = true;
     }
@@ -120,12 +120,14 @@ export const login_user = async (request: { email: string; password: string | nu
       id: user.id,
       first_name: user.first_name,
       last_name: user.last_name,
+      is_profile_required,
       space: { id: space?.id, name: space?.name },
     };
 
     const token = await signJwt(token_payload);
     const remember_token = await signJwt(token_payload, 60 * 60 * 3 + 60 * 5); // remember token 3 hour + 5 menuites
 
+    // update remember token and token in db
     await tx.user.update({
       where: {
         id: user.id,
@@ -141,6 +143,7 @@ export const login_user = async (request: { email: string; password: string | nu
       id: user.id,
       first_name: user.first_name,
       last_name: user.last_name,
+      is_profile_required,
       space: { id: space?.id, name: space?.name },
       token,
     };

@@ -21,8 +21,9 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
   try {
     const parsedData = login_request_validation.parse(req.body);
     const { email, password, reset_token } = parsedData;
-
+    // Login service
     const data = await login_user({ email, password: password || null, reset_token: reset_token || null });
+    // Response
     res.status(200).json({ success: true, data });
   } catch (error) {
     next(error);
