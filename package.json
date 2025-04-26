@@ -1,0 +1,28 @@
+{
+  "name": "duwitter-be",
+  "module": "server.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "bun build src/server.ts --outdir=dist",
+    "start": "bun run build && bun dist/server.js",
+    "dev": "bun --watch server.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prisma": "^6.6.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "@types/bcryptjs": "^3.0.0",
+    "@types/express": "^5.0.1",
+    "@types/supertest": "^6.0.3",
+    "bcryptjs": "^3.0.2",
+    "express": "^5.1.0",
+    "supertest": "^7.1.0",
+    "zod": "^3.24.3"
+  }
+}
