@@ -1,5 +1,5 @@
 import express from 'express';
-import { register } from '../controller/user';
+import { login, register } from '../controller/user';
 
 export const publicRouter = express.Router();
 
@@ -11,3 +11,4 @@ router.get('/test', (req, res) => {
 
 // AUTH
 router.post('/register', register);
+router.post('/login', login);

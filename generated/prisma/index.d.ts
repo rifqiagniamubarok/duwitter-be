@@ -1051,13 +1051,13 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
+    space_owned: number
     spaces: number
-    space_members: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    space_owned?: boolean | UserCountOutputTypeCountSpace_ownedArgs
     spaces?: boolean | UserCountOutputTypeCountSpacesArgs
-    space_members?: boolean | UserCountOutputTypeCountSpace_membersArgs
   }
 
   // Custom InputTypes
@@ -1074,14 +1074,14 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSpacesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountSpace_ownedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SpaceWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSpace_membersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountSpacesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SpaceMemberWhereInput
   }
 
@@ -1137,7 +1137,16 @@ export namespace Prisma {
     last_name: string | null
     email: string | null
     password: string | null
-    reset_token: string | null
+    birth_date: Date | null
+    birth_place: string | null
+    phone_number: string | null
+    country: string | null
+    city: string | null
+    address: string | null
+    q1: string | null
+    q2: string | null
+    remember_token: string | null
+    current_token: string | null
     default_space_id: string | null
     created_at: Date | null
     updated_at: Date | null
@@ -1149,7 +1158,16 @@ export namespace Prisma {
     last_name: string | null
     email: string | null
     password: string | null
-    reset_token: string | null
+    birth_date: Date | null
+    birth_place: string | null
+    phone_number: string | null
+    country: string | null
+    city: string | null
+    address: string | null
+    q1: string | null
+    q2: string | null
+    remember_token: string | null
+    current_token: string | null
     default_space_id: string | null
     created_at: Date | null
     updated_at: Date | null
@@ -1161,7 +1179,16 @@ export namespace Prisma {
     last_name: number
     email: number
     password: number
-    reset_token: number
+    birth_date: number
+    birth_place: number
+    phone_number: number
+    country: number
+    city: number
+    address: number
+    q1: number
+    q2: number
+    remember_token: number
+    current_token: number
     default_space_id: number
     created_at: number
     updated_at: number
@@ -1175,7 +1202,16 @@ export namespace Prisma {
     last_name?: true
     email?: true
     password?: true
-    reset_token?: true
+    birth_date?: true
+    birth_place?: true
+    phone_number?: true
+    country?: true
+    city?: true
+    address?: true
+    q1?: true
+    q2?: true
+    remember_token?: true
+    current_token?: true
     default_space_id?: true
     created_at?: true
     updated_at?: true
@@ -1187,7 +1223,16 @@ export namespace Prisma {
     last_name?: true
     email?: true
     password?: true
-    reset_token?: true
+    birth_date?: true
+    birth_place?: true
+    phone_number?: true
+    country?: true
+    city?: true
+    address?: true
+    q1?: true
+    q2?: true
+    remember_token?: true
+    current_token?: true
     default_space_id?: true
     created_at?: true
     updated_at?: true
@@ -1199,7 +1244,16 @@ export namespace Prisma {
     last_name?: true
     email?: true
     password?: true
-    reset_token?: true
+    birth_date?: true
+    birth_place?: true
+    phone_number?: true
+    country?: true
+    city?: true
+    address?: true
+    q1?: true
+    q2?: true
+    remember_token?: true
+    current_token?: true
     default_space_id?: true
     created_at?: true
     updated_at?: true
@@ -1283,8 +1337,17 @@ export namespace Prisma {
     first_name: string
     last_name: string
     email: string
-    password: string
-    reset_token: string | null
+    password: string | null
+    birth_date: Date | null
+    birth_place: string | null
+    phone_number: string | null
+    country: string | null
+    city: string | null
+    address: string | null
+    q1: string | null
+    q2: string | null
+    remember_token: string | null
+    current_token: string | null
     default_space_id: string | null
     created_at: Date
     updated_at: Date | null
@@ -1313,12 +1376,21 @@ export namespace Prisma {
     last_name?: boolean
     email?: boolean
     password?: boolean
-    reset_token?: boolean
+    birth_date?: boolean
+    birth_place?: boolean
+    phone_number?: boolean
+    country?: boolean
+    city?: boolean
+    address?: boolean
+    q1?: boolean
+    q2?: boolean
+    remember_token?: boolean
+    current_token?: boolean
     default_space_id?: boolean
     created_at?: boolean
     updated_at?: boolean
+    space_owned?: boolean | User$space_ownedArgs<ExtArgs>
     spaces?: boolean | User$spacesArgs<ExtArgs>
-    space_members?: boolean | User$space_membersArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1328,7 +1400,16 @@ export namespace Prisma {
     last_name?: boolean
     email?: boolean
     password?: boolean
-    reset_token?: boolean
+    birth_date?: boolean
+    birth_place?: boolean
+    phone_number?: boolean
+    country?: boolean
+    city?: boolean
+    address?: boolean
+    q1?: boolean
+    q2?: boolean
+    remember_token?: boolean
+    current_token?: boolean
     default_space_id?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -1340,7 +1421,16 @@ export namespace Prisma {
     last_name?: boolean
     email?: boolean
     password?: boolean
-    reset_token?: boolean
+    birth_date?: boolean
+    birth_place?: boolean
+    phone_number?: boolean
+    country?: boolean
+    city?: boolean
+    address?: boolean
+    q1?: boolean
+    q2?: boolean
+    remember_token?: boolean
+    current_token?: boolean
     default_space_id?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -1352,16 +1442,25 @@ export namespace Prisma {
     last_name?: boolean
     email?: boolean
     password?: boolean
-    reset_token?: boolean
+    birth_date?: boolean
+    birth_place?: boolean
+    phone_number?: boolean
+    country?: boolean
+    city?: boolean
+    address?: boolean
+    q1?: boolean
+    q2?: boolean
+    remember_token?: boolean
+    current_token?: boolean
     default_space_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "first_name" | "last_name" | "email" | "password" | "reset_token" | "default_space_id" | "created_at" | "updated_at", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "first_name" | "last_name" | "email" | "password" | "birth_date" | "birth_place" | "phone_number" | "country" | "city" | "address" | "q1" | "q2" | "remember_token" | "current_token" | "default_space_id" | "created_at" | "updated_at", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    space_owned?: boolean | User$space_ownedArgs<ExtArgs>
     spaces?: boolean | User$spacesArgs<ExtArgs>
-    space_members?: boolean | User$space_membersArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1370,16 +1469,25 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      spaces: Prisma.$SpacePayload<ExtArgs>[]
-      space_members: Prisma.$SpaceMemberPayload<ExtArgs>[]
+      space_owned: Prisma.$SpacePayload<ExtArgs>[]
+      spaces: Prisma.$SpaceMemberPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       first_name: string
       last_name: string
       email: string
-      password: string
-      reset_token: string | null
+      password: string | null
+      birth_date: Date | null
+      birth_place: string | null
+      phone_number: string | null
+      country: string | null
+      city: string | null
+      address: string | null
+      q1: string | null
+      q2: string | null
+      remember_token: string | null
+      current_token: string | null
       default_space_id: string | null
       created_at: Date
       updated_at: Date | null
@@ -1777,8 +1885,8 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    spaces<T extends User$spacesArgs<ExtArgs> = {}>(args?: Subset<T, User$spacesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    space_members<T extends User$space_membersArgs<ExtArgs> = {}>(args?: Subset<T, User$space_membersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpaceMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    space_owned<T extends User$space_ownedArgs<ExtArgs> = {}>(args?: Subset<T, User$space_ownedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    spaces<T extends User$spacesArgs<ExtArgs> = {}>(args?: Subset<T, User$spacesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpaceMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1813,7 +1921,16 @@ export namespace Prisma {
     readonly last_name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
-    readonly reset_token: FieldRef<"User", 'String'>
+    readonly birth_date: FieldRef<"User", 'DateTime'>
+    readonly birth_place: FieldRef<"User", 'String'>
+    readonly phone_number: FieldRef<"User", 'String'>
+    readonly country: FieldRef<"User", 'String'>
+    readonly city: FieldRef<"User", 'String'>
+    readonly address: FieldRef<"User", 'String'>
+    readonly q1: FieldRef<"User", 'String'>
+    readonly q2: FieldRef<"User", 'String'>
+    readonly remember_token: FieldRef<"User", 'String'>
+    readonly current_token: FieldRef<"User", 'String'>
     readonly default_space_id: FieldRef<"User", 'String'>
     readonly created_at: FieldRef<"User", 'DateTime'>
     readonly updated_at: FieldRef<"User", 'DateTime'>
@@ -2205,9 +2322,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.spaces
+   * User.space_owned
    */
-  export type User$spacesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$space_ownedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Space
      */
@@ -2229,9 +2346,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.space_members
+   * User.spaces
    */
-  export type User$space_membersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$spacesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the SpaceMember
      */
@@ -4484,7 +4601,16 @@ export namespace Prisma {
     last_name: 'last_name',
     email: 'email',
     password: 'password',
-    reset_token: 'reset_token',
+    birth_date: 'birth_date',
+    birth_place: 'birth_place',
+    phone_number: 'phone_number',
+    country: 'country',
+    city: 'city',
+    address: 'address',
+    q1: 'q1',
+    q2: 'q2',
+    remember_token: 'remember_token',
+    current_token: 'current_token',
     default_space_id: 'default_space_id',
     created_at: 'created_at',
     updated_at: 'updated_at'
@@ -4607,13 +4733,22 @@ export namespace Prisma {
     first_name?: StringFilter<"User"> | string
     last_name?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
-    reset_token?: StringNullableFilter<"User"> | string | null
+    password?: StringNullableFilter<"User"> | string | null
+    birth_date?: DateTimeNullableFilter<"User"> | Date | string | null
+    birth_place?: StringNullableFilter<"User"> | string | null
+    phone_number?: StringNullableFilter<"User"> | string | null
+    country?: StringNullableFilter<"User"> | string | null
+    city?: StringNullableFilter<"User"> | string | null
+    address?: StringNullableFilter<"User"> | string | null
+    q1?: StringNullableFilter<"User"> | string | null
+    q2?: StringNullableFilter<"User"> | string | null
+    remember_token?: StringNullableFilter<"User"> | string | null
+    current_token?: StringNullableFilter<"User"> | string | null
     default_space_id?: UuidNullableFilter<"User"> | string | null
     created_at?: DateTimeFilter<"User"> | Date | string
     updated_at?: DateTimeNullableFilter<"User"> | Date | string | null
-    spaces?: SpaceListRelationFilter
-    space_members?: SpaceMemberListRelationFilter
+    space_owned?: SpaceListRelationFilter
+    spaces?: SpaceMemberListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4621,13 +4756,22 @@ export namespace Prisma {
     first_name?: SortOrder
     last_name?: SortOrder
     email?: SortOrder
-    password?: SortOrder
-    reset_token?: SortOrderInput | SortOrder
+    password?: SortOrderInput | SortOrder
+    birth_date?: SortOrderInput | SortOrder
+    birth_place?: SortOrderInput | SortOrder
+    phone_number?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    q1?: SortOrderInput | SortOrder
+    q2?: SortOrderInput | SortOrder
+    remember_token?: SortOrderInput | SortOrder
+    current_token?: SortOrderInput | SortOrder
     default_space_id?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
-    spaces?: SpaceOrderByRelationAggregateInput
-    space_members?: SpaceMemberOrderByRelationAggregateInput
+    space_owned?: SpaceOrderByRelationAggregateInput
+    spaces?: SpaceMemberOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4638,13 +4782,22 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     first_name?: StringFilter<"User"> | string
     last_name?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
-    reset_token?: StringNullableFilter<"User"> | string | null
+    password?: StringNullableFilter<"User"> | string | null
+    birth_date?: DateTimeNullableFilter<"User"> | Date | string | null
+    birth_place?: StringNullableFilter<"User"> | string | null
+    phone_number?: StringNullableFilter<"User"> | string | null
+    country?: StringNullableFilter<"User"> | string | null
+    city?: StringNullableFilter<"User"> | string | null
+    address?: StringNullableFilter<"User"> | string | null
+    q1?: StringNullableFilter<"User"> | string | null
+    q2?: StringNullableFilter<"User"> | string | null
+    remember_token?: StringNullableFilter<"User"> | string | null
+    current_token?: StringNullableFilter<"User"> | string | null
     default_space_id?: UuidNullableFilter<"User"> | string | null
     created_at?: DateTimeFilter<"User"> | Date | string
     updated_at?: DateTimeNullableFilter<"User"> | Date | string | null
-    spaces?: SpaceListRelationFilter
-    space_members?: SpaceMemberListRelationFilter
+    space_owned?: SpaceListRelationFilter
+    spaces?: SpaceMemberListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -4652,8 +4805,17 @@ export namespace Prisma {
     first_name?: SortOrder
     last_name?: SortOrder
     email?: SortOrder
-    password?: SortOrder
-    reset_token?: SortOrderInput | SortOrder
+    password?: SortOrderInput | SortOrder
+    birth_date?: SortOrderInput | SortOrder
+    birth_place?: SortOrderInput | SortOrder
+    phone_number?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    q1?: SortOrderInput | SortOrder
+    q2?: SortOrderInput | SortOrder
+    remember_token?: SortOrderInput | SortOrder
+    current_token?: SortOrderInput | SortOrder
     default_space_id?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
@@ -4670,8 +4832,17 @@ export namespace Prisma {
     first_name?: StringWithAggregatesFilter<"User"> | string
     last_name?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
-    password?: StringWithAggregatesFilter<"User"> | string
-    reset_token?: StringNullableWithAggregatesFilter<"User"> | string | null
+    password?: StringNullableWithAggregatesFilter<"User"> | string | null
+    birth_date?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    birth_place?: StringNullableWithAggregatesFilter<"User"> | string | null
+    phone_number?: StringNullableWithAggregatesFilter<"User"> | string | null
+    country?: StringNullableWithAggregatesFilter<"User"> | string | null
+    city?: StringNullableWithAggregatesFilter<"User"> | string | null
+    address?: StringNullableWithAggregatesFilter<"User"> | string | null
+    q1?: StringNullableWithAggregatesFilter<"User"> | string | null
+    q2?: StringNullableWithAggregatesFilter<"User"> | string | null
+    remember_token?: StringNullableWithAggregatesFilter<"User"> | string | null
+    current_token?: StringNullableWithAggregatesFilter<"User"> | string | null
     default_space_id?: UuidNullableWithAggregatesFilter<"User"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updated_at?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
@@ -4813,13 +4984,22 @@ export namespace Prisma {
     first_name: string
     last_name: string
     email: string
-    password: string
-    reset_token?: string | null
+    password?: string | null
+    birth_date?: Date | string | null
+    birth_place?: string | null
+    phone_number?: string | null
+    country?: string | null
+    city?: string | null
+    address?: string | null
+    q1?: string | null
+    q2?: string | null
+    remember_token?: string | null
+    current_token?: string | null
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
-    spaces?: SpaceCreateNestedManyWithoutOwnerInput
-    space_members?: SpaceMemberCreateNestedManyWithoutUserInput
+    space_owned?: SpaceCreateNestedManyWithoutOwnerInput
+    spaces?: SpaceMemberCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4827,13 +5007,22 @@ export namespace Prisma {
     first_name: string
     last_name: string
     email: string
-    password: string
-    reset_token?: string | null
+    password?: string | null
+    birth_date?: Date | string | null
+    birth_place?: string | null
+    phone_number?: string | null
+    country?: string | null
+    city?: string | null
+    address?: string | null
+    q1?: string | null
+    q2?: string | null
+    remember_token?: string | null
+    current_token?: string | null
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
-    spaces?: SpaceUncheckedCreateNestedManyWithoutOwnerInput
-    space_members?: SpaceMemberUncheckedCreateNestedManyWithoutUserInput
+    space_owned?: SpaceUncheckedCreateNestedManyWithoutOwnerInput
+    spaces?: SpaceMemberUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -4841,13 +5030,22 @@ export namespace Prisma {
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    birth_place?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    q1?: NullableStringFieldUpdateOperationsInput | string | null
+    q2?: NullableStringFieldUpdateOperationsInput | string | null
+    remember_token?: NullableStringFieldUpdateOperationsInput | string | null
+    current_token?: NullableStringFieldUpdateOperationsInput | string | null
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    spaces?: SpaceUpdateManyWithoutOwnerNestedInput
-    space_members?: SpaceMemberUpdateManyWithoutUserNestedInput
+    space_owned?: SpaceUpdateManyWithoutOwnerNestedInput
+    spaces?: SpaceMemberUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4855,13 +5053,22 @@ export namespace Prisma {
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    birth_place?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    q1?: NullableStringFieldUpdateOperationsInput | string | null
+    q2?: NullableStringFieldUpdateOperationsInput | string | null
+    remember_token?: NullableStringFieldUpdateOperationsInput | string | null
+    current_token?: NullableStringFieldUpdateOperationsInput | string | null
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    spaces?: SpaceUncheckedUpdateManyWithoutOwnerNestedInput
-    space_members?: SpaceMemberUncheckedUpdateManyWithoutUserNestedInput
+    space_owned?: SpaceUncheckedUpdateManyWithoutOwnerNestedInput
+    spaces?: SpaceMemberUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -4869,8 +5076,17 @@ export namespace Prisma {
     first_name: string
     last_name: string
     email: string
-    password: string
-    reset_token?: string | null
+    password?: string | null
+    birth_date?: Date | string | null
+    birth_place?: string | null
+    phone_number?: string | null
+    country?: string | null
+    city?: string | null
+    address?: string | null
+    q1?: string | null
+    q2?: string | null
+    remember_token?: string | null
+    current_token?: string | null
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
@@ -4881,8 +5097,17 @@ export namespace Prisma {
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    birth_place?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    q1?: NullableStringFieldUpdateOperationsInput | string | null
+    q2?: NullableStringFieldUpdateOperationsInput | string | null
+    remember_token?: NullableStringFieldUpdateOperationsInput | string | null
+    current_token?: NullableStringFieldUpdateOperationsInput | string | null
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -4893,8 +5118,17 @@ export namespace Prisma {
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    birth_place?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    q1?: NullableStringFieldUpdateOperationsInput | string | null
+    q2?: NullableStringFieldUpdateOperationsInput | string | null
+    remember_token?: NullableStringFieldUpdateOperationsInput | string | null
+    current_token?: NullableStringFieldUpdateOperationsInput | string | null
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -4907,7 +5141,7 @@ export namespace Prisma {
     is_personal?: boolean
     created_at?: Date | string
     updated_at?: Date | string | null
-    owner: UserCreateNestedOneWithoutSpacesInput
+    owner: UserCreateNestedOneWithoutSpace_ownedInput
     space_members?: SpaceMemberCreateNestedManyWithoutSpaceInput
   }
 
@@ -4929,7 +5163,7 @@ export namespace Prisma {
     is_personal?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    owner?: UserUpdateOneRequiredWithoutSpacesNestedInput
+    owner?: UserUpdateOneRequiredWithoutSpace_ownedNestedInput
     space_members?: SpaceMemberUpdateManyWithoutSpaceNestedInput
   }
 
@@ -4979,7 +5213,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string | null
     space: SpaceCreateNestedOneWithoutSpace_membersInput
-    user: UserCreateNestedOneWithoutSpace_membersInput
+    user: UserCreateNestedOneWithoutSpacesInput
   }
 
   export type SpaceMemberUncheckedCreateInput = {
@@ -4997,7 +5231,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     space?: SpaceUpdateOneRequiredWithoutSpace_membersNestedInput
-    user?: UserUpdateOneRequiredWithoutSpace_membersNestedInput
+    user?: UserUpdateOneRequiredWithoutSpacesNestedInput
   }
 
   export type SpaceMemberUncheckedUpdateInput = {
@@ -5076,6 +5310,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type UuidNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -5097,17 +5342,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type SpaceListRelationFilter = {
@@ -5141,7 +5375,16 @@ export namespace Prisma {
     last_name?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    reset_token?: SortOrder
+    birth_date?: SortOrder
+    birth_place?: SortOrder
+    phone_number?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    address?: SortOrder
+    q1?: SortOrder
+    q2?: SortOrder
+    remember_token?: SortOrder
+    current_token?: SortOrder
     default_space_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -5153,7 +5396,16 @@ export namespace Prisma {
     last_name?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    reset_token?: SortOrder
+    birth_date?: SortOrder
+    birth_place?: SortOrder
+    phone_number?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    address?: SortOrder
+    q1?: SortOrder
+    q2?: SortOrder
+    remember_token?: SortOrder
+    current_token?: SortOrder
     default_space_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -5165,7 +5417,16 @@ export namespace Prisma {
     last_name?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    reset_token?: SortOrder
+    birth_date?: SortOrder
+    birth_place?: SortOrder
+    phone_number?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    address?: SortOrder
+    q1?: SortOrder
+    q2?: SortOrder
+    remember_token?: SortOrder
+    current_token?: SortOrder
     default_space_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -5222,6 +5483,20 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type UuidNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -5249,20 +5524,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -5381,12 +5642,12 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type SpaceUpdateManyWithoutOwnerNestedInput = {
@@ -5445,9 +5706,9 @@ export namespace Prisma {
     deleteMany?: SpaceMemberScalarWhereInput | SpaceMemberScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutSpacesInput = {
-    create?: XOR<UserCreateWithoutSpacesInput, UserUncheckedCreateWithoutSpacesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSpacesInput
+  export type UserCreateNestedOneWithoutSpace_ownedInput = {
+    create?: XOR<UserCreateWithoutSpace_ownedInput, UserUncheckedCreateWithoutSpace_ownedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSpace_ownedInput
     connect?: UserWhereUniqueInput
   }
 
@@ -5469,12 +5730,12 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type UserUpdateOneRequiredWithoutSpacesNestedInput = {
-    create?: XOR<UserCreateWithoutSpacesInput, UserUncheckedCreateWithoutSpacesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSpacesInput
-    upsert?: UserUpsertWithoutSpacesInput
+  export type UserUpdateOneRequiredWithoutSpace_ownedNestedInput = {
+    create?: XOR<UserCreateWithoutSpace_ownedInput, UserUncheckedCreateWithoutSpace_ownedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSpace_ownedInput
+    upsert?: UserUpsertWithoutSpace_ownedInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSpacesInput, UserUpdateWithoutSpacesInput>, UserUncheckedUpdateWithoutSpacesInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSpace_ownedInput, UserUpdateWithoutSpace_ownedInput>, UserUncheckedUpdateWithoutSpace_ownedInput>
   }
 
   export type SpaceMemberUpdateManyWithoutSpaceNestedInput = {
@@ -5511,9 +5772,9 @@ export namespace Prisma {
     connect?: SpaceWhereUniqueInput
   }
 
-  export type UserCreateNestedOneWithoutSpace_membersInput = {
-    create?: XOR<UserCreateWithoutSpace_membersInput, UserUncheckedCreateWithoutSpace_membersInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSpace_membersInput
+  export type UserCreateNestedOneWithoutSpacesInput = {
+    create?: XOR<UserCreateWithoutSpacesInput, UserUncheckedCreateWithoutSpacesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSpacesInput
     connect?: UserWhereUniqueInput
   }
 
@@ -5525,12 +5786,12 @@ export namespace Prisma {
     update?: XOR<XOR<SpaceUpdateToOneWithWhereWithoutSpace_membersInput, SpaceUpdateWithoutSpace_membersInput>, SpaceUncheckedUpdateWithoutSpace_membersInput>
   }
 
-  export type UserUpdateOneRequiredWithoutSpace_membersNestedInput = {
-    create?: XOR<UserCreateWithoutSpace_membersInput, UserUncheckedCreateWithoutSpace_membersInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSpace_membersInput
-    upsert?: UserUpsertWithoutSpace_membersInput
+  export type UserUpdateOneRequiredWithoutSpacesNestedInput = {
+    create?: XOR<UserCreateWithoutSpacesInput, UserUncheckedCreateWithoutSpacesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSpacesInput
+    upsert?: UserUpsertWithoutSpacesInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSpace_membersInput, UserUpdateWithoutSpace_membersInput>, UserUncheckedUpdateWithoutSpace_membersInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSpacesInput, UserUpdateWithoutSpacesInput>, UserUncheckedUpdateWithoutSpacesInput>
   }
 
   export type NestedUuidFilter<$PrismaModel = never> = {
@@ -5572,6 +5833,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedUuidNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -5592,17 +5864,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
@@ -5675,6 +5936,20 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type NestedUuidNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -5701,20 +5976,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -5843,35 +6104,53 @@ export namespace Prisma {
     updated_at?: DateTimeNullableFilter<"SpaceMember"> | Date | string | null
   }
 
-  export type UserCreateWithoutSpacesInput = {
+  export type UserCreateWithoutSpace_ownedInput = {
     id?: string
     first_name: string
     last_name: string
     email: string
-    password: string
-    reset_token?: string | null
+    password?: string | null
+    birth_date?: Date | string | null
+    birth_place?: string | null
+    phone_number?: string | null
+    country?: string | null
+    city?: string | null
+    address?: string | null
+    q1?: string | null
+    q2?: string | null
+    remember_token?: string | null
+    current_token?: string | null
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
-    space_members?: SpaceMemberCreateNestedManyWithoutUserInput
+    spaces?: SpaceMemberCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutSpacesInput = {
+  export type UserUncheckedCreateWithoutSpace_ownedInput = {
     id?: string
     first_name: string
     last_name: string
     email: string
-    password: string
-    reset_token?: string | null
+    password?: string | null
+    birth_date?: Date | string | null
+    birth_place?: string | null
+    phone_number?: string | null
+    country?: string | null
+    city?: string | null
+    address?: string | null
+    q1?: string | null
+    q2?: string | null
+    remember_token?: string | null
+    current_token?: string | null
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
-    space_members?: SpaceMemberUncheckedCreateNestedManyWithoutUserInput
+    spaces?: SpaceMemberUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutSpacesInput = {
+  export type UserCreateOrConnectWithoutSpace_ownedInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSpacesInput, UserUncheckedCreateWithoutSpacesInput>
+    create: XOR<UserCreateWithoutSpace_ownedInput, UserUncheckedCreateWithoutSpace_ownedInput>
   }
 
   export type SpaceMemberCreateWithoutSpaceInput = {
@@ -5879,7 +6158,7 @@ export namespace Prisma {
     is_default?: boolean
     created_at?: Date | string
     updated_at?: Date | string | null
-    user: UserCreateNestedOneWithoutSpace_membersInput
+    user: UserCreateNestedOneWithoutSpacesInput
   }
 
   export type SpaceMemberUncheckedCreateWithoutSpaceInput = {
@@ -5900,41 +6179,59 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserUpsertWithoutSpacesInput = {
-    update: XOR<UserUpdateWithoutSpacesInput, UserUncheckedUpdateWithoutSpacesInput>
-    create: XOR<UserCreateWithoutSpacesInput, UserUncheckedCreateWithoutSpacesInput>
+  export type UserUpsertWithoutSpace_ownedInput = {
+    update: XOR<UserUpdateWithoutSpace_ownedInput, UserUncheckedUpdateWithoutSpace_ownedInput>
+    create: XOR<UserCreateWithoutSpace_ownedInput, UserUncheckedCreateWithoutSpace_ownedInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutSpacesInput = {
+  export type UserUpdateToOneWithWhereWithoutSpace_ownedInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSpacesInput, UserUncheckedUpdateWithoutSpacesInput>
+    data: XOR<UserUpdateWithoutSpace_ownedInput, UserUncheckedUpdateWithoutSpace_ownedInput>
   }
 
-  export type UserUpdateWithoutSpacesInput = {
+  export type UserUpdateWithoutSpace_ownedInput = {
     id?: StringFieldUpdateOperationsInput | string
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    birth_place?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    q1?: NullableStringFieldUpdateOperationsInput | string | null
+    q2?: NullableStringFieldUpdateOperationsInput | string | null
+    remember_token?: NullableStringFieldUpdateOperationsInput | string | null
+    current_token?: NullableStringFieldUpdateOperationsInput | string | null
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    space_members?: SpaceMemberUpdateManyWithoutUserNestedInput
+    spaces?: SpaceMemberUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutSpacesInput = {
+  export type UserUncheckedUpdateWithoutSpace_ownedInput = {
     id?: StringFieldUpdateOperationsInput | string
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    birth_place?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    q1?: NullableStringFieldUpdateOperationsInput | string | null
+    q2?: NullableStringFieldUpdateOperationsInput | string | null
+    remember_token?: NullableStringFieldUpdateOperationsInput | string | null
+    current_token?: NullableStringFieldUpdateOperationsInput | string | null
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    space_members?: SpaceMemberUncheckedUpdateManyWithoutUserNestedInput
+    spaces?: SpaceMemberUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type SpaceMemberUpsertWithWhereUniqueWithoutSpaceInput = {
@@ -5960,7 +6257,7 @@ export namespace Prisma {
     is_personal?: boolean
     created_at?: Date | string
     updated_at?: Date | string | null
-    owner: UserCreateNestedOneWithoutSpacesInput
+    owner: UserCreateNestedOneWithoutSpace_ownedInput
   }
 
   export type SpaceUncheckedCreateWithoutSpace_membersInput = {
@@ -5978,35 +6275,53 @@ export namespace Prisma {
     create: XOR<SpaceCreateWithoutSpace_membersInput, SpaceUncheckedCreateWithoutSpace_membersInput>
   }
 
-  export type UserCreateWithoutSpace_membersInput = {
+  export type UserCreateWithoutSpacesInput = {
     id?: string
     first_name: string
     last_name: string
     email: string
-    password: string
-    reset_token?: string | null
+    password?: string | null
+    birth_date?: Date | string | null
+    birth_place?: string | null
+    phone_number?: string | null
+    country?: string | null
+    city?: string | null
+    address?: string | null
+    q1?: string | null
+    q2?: string | null
+    remember_token?: string | null
+    current_token?: string | null
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
-    spaces?: SpaceCreateNestedManyWithoutOwnerInput
+    space_owned?: SpaceCreateNestedManyWithoutOwnerInput
   }
 
-  export type UserUncheckedCreateWithoutSpace_membersInput = {
+  export type UserUncheckedCreateWithoutSpacesInput = {
     id?: string
     first_name: string
     last_name: string
     email: string
-    password: string
-    reset_token?: string | null
+    password?: string | null
+    birth_date?: Date | string | null
+    birth_place?: string | null
+    phone_number?: string | null
+    country?: string | null
+    city?: string | null
+    address?: string | null
+    q1?: string | null
+    q2?: string | null
+    remember_token?: string | null
+    current_token?: string | null
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
-    spaces?: SpaceUncheckedCreateNestedManyWithoutOwnerInput
+    space_owned?: SpaceUncheckedCreateNestedManyWithoutOwnerInput
   }
 
-  export type UserCreateOrConnectWithoutSpace_membersInput = {
+  export type UserCreateOrConnectWithoutSpacesInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSpace_membersInput, UserUncheckedCreateWithoutSpace_membersInput>
+    create: XOR<UserCreateWithoutSpacesInput, UserUncheckedCreateWithoutSpacesInput>
   }
 
   export type SpaceUpsertWithoutSpace_membersInput = {
@@ -6027,7 +6342,7 @@ export namespace Prisma {
     is_personal?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    owner?: UserUpdateOneRequiredWithoutSpacesNestedInput
+    owner?: UserUpdateOneRequiredWithoutSpace_ownedNestedInput
   }
 
   export type SpaceUncheckedUpdateWithoutSpace_membersInput = {
@@ -6040,41 +6355,59 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type UserUpsertWithoutSpace_membersInput = {
-    update: XOR<UserUpdateWithoutSpace_membersInput, UserUncheckedUpdateWithoutSpace_membersInput>
-    create: XOR<UserCreateWithoutSpace_membersInput, UserUncheckedCreateWithoutSpace_membersInput>
+  export type UserUpsertWithoutSpacesInput = {
+    update: XOR<UserUpdateWithoutSpacesInput, UserUncheckedUpdateWithoutSpacesInput>
+    create: XOR<UserCreateWithoutSpacesInput, UserUncheckedCreateWithoutSpacesInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutSpace_membersInput = {
+  export type UserUpdateToOneWithWhereWithoutSpacesInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSpace_membersInput, UserUncheckedUpdateWithoutSpace_membersInput>
+    data: XOR<UserUpdateWithoutSpacesInput, UserUncheckedUpdateWithoutSpacesInput>
   }
 
-  export type UserUpdateWithoutSpace_membersInput = {
+  export type UserUpdateWithoutSpacesInput = {
     id?: StringFieldUpdateOperationsInput | string
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    birth_place?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    q1?: NullableStringFieldUpdateOperationsInput | string | null
+    q2?: NullableStringFieldUpdateOperationsInput | string | null
+    remember_token?: NullableStringFieldUpdateOperationsInput | string | null
+    current_token?: NullableStringFieldUpdateOperationsInput | string | null
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    spaces?: SpaceUpdateManyWithoutOwnerNestedInput
+    space_owned?: SpaceUpdateManyWithoutOwnerNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutSpace_membersInput = {
+  export type UserUncheckedUpdateWithoutSpacesInput = {
     id?: StringFieldUpdateOperationsInput | string
     first_name?: StringFieldUpdateOperationsInput | string
     last_name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    birth_place?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    q1?: NullableStringFieldUpdateOperationsInput | string | null
+    q2?: NullableStringFieldUpdateOperationsInput | string | null
+    remember_token?: NullableStringFieldUpdateOperationsInput | string | null
+    current_token?: NullableStringFieldUpdateOperationsInput | string | null
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    spaces?: SpaceUncheckedUpdateManyWithoutOwnerNestedInput
+    space_owned?: SpaceUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type SpaceCreateManyOwnerInput = {
@@ -6160,7 +6493,7 @@ export namespace Prisma {
     is_default?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user?: UserUpdateOneRequiredWithoutSpace_membersNestedInput
+    user?: UserUpdateOneRequiredWithoutSpacesNestedInput
   }
 
   export type SpaceMemberUncheckedUpdateWithoutSpaceInput = {

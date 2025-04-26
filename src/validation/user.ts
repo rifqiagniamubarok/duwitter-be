@@ -19,12 +19,30 @@ export const password_validation = z
 
 export const register_requeest_validation = z
   .object({
-    first_name: z.string().min(1, 'First name is required.').max(60, 'First name must not exceed 60 characters.'),
-    last_name: z.string().min(1, 'Last name is required.').max(60, 'Last name must not exceed 60 characters.'),
+    first_name: z.string().min(1, 'First name is required.').max(20, 'First name must not exceed 20 characters.'),
+    last_name: z.string().min(1, 'Last name is required.').max(20, 'Last name must not exceed 20 characters.'),
     email: z.string().email('Please provide a valid email address.'),
     password: password_validation,
     confirm_password: password_validation,
   })
   .refine((data) => data.password === data.confirm_password, {
     message: 'Passwords do not match. Please ensure both passwords are the same.',
+  });
+
+export const login_request_validation = z
+  .object({
+    email: z.string().email('Please provide a valid email address.').min(1, 'Email is required.'),
+    password: z
+      .string()
+      .min(6, 'Password must be at least 6 characters long.')
+      .min(8, 'Password must not exceed 8 characters.')
+      .max(20, 'Password must not exceed 20 characters.')
+      .nullable()
+      .optional()
+      .default(null),
+    reset_token: z.string().nullable().optional().default(null),
+  })
+  .refine((data) => data.password !== null || data.reset_token !== null, {
+    message: 'Password is required.',
+    path: ['password'],
   });
