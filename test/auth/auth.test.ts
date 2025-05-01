@@ -150,8 +150,7 @@ describe('auth test', () => {
   });
 
   test('PC: test api with token', async () => {
-    const { status, body } = await supertest(app).get(`/api/v1/testing`).set('Authorization', `Bearer ${token}`);
-
+    const { status } = await supertest(app).get(`/api/v1/protected-api-test`).set('Authorization', `Bearer ${token}`);
     expect(status).toBe(200);
   });
 });

@@ -5,7 +5,7 @@ export const public_router = express.Router();
 
 const router = public_router;
 
-router.get('/test', (req, res) => {
+router.get('/public-api-test', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 

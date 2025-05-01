@@ -1,0 +1,12 @@
+-- CreateEnum
+CREATE TYPE "Account_type" AS ENUM ('CASH', 'BANK', 'CREDIT_CARD', 'DEBIT_CARD', 'E_WALLET', 'INVESTMENT', 'LOAN');
+
+-- AlterTable
+ALTER TABLE "accounts" ADD COLUMN     "type" "Account_type" NOT NULL DEFAULT 'CASH';
+
+-- AlterTable
+ALTER TABLE "transactions" ADD COLUMN     "ammount" DOUBLE PRECISION NOT NULL DEFAULT 0,
+ADD COLUMN     "category_id" UUID,
+ADD COLUMN     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN     "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN     "updated_at" TIMESTAMP(3);

@@ -165,6 +165,7 @@ exports.Prisma.AccountScalarFieldEnum = {
   description: 'description',
   currency: 'currency',
   balance: 'balance',
+  type: 'type',
   icon: 'icon',
   color: 'color',
   bg_color: 'bg_color'
@@ -200,6 +201,11 @@ exports.Prisma.TransactionScalarFieldEnum = {
   account_id: 'account_id',
   title: 'title',
   note: 'note',
+  category_id: 'category_id',
+  amount: 'amount',
+  date: 'date',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
   model: 'model',
   type: 'type'
 };
@@ -218,6 +224,16 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.Account_type = exports.$Enums.Account_type = {
+  CASH: 'CASH',
+  BANK: 'BANK',
+  CREDIT_CARD: 'CREDIT_CARD',
+  DEBIT_CARD: 'DEBIT_CARD',
+  E_WALLET: 'E_WALLET',
+  INVESTMENT: 'INVESTMENT',
+  LOAN: 'LOAN'
+};
+
 exports.Transaction_type = exports.$Enums.Transaction_type = {
   INCOME: 'INCOME',
   EXPENSE: 'EXPENSE'

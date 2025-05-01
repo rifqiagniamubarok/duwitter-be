@@ -79,13 +79,24 @@ model SpaceMember {
   @@map("space_members")
 }
 
+enum Account_type {
+  CASH
+  BANK
+  CREDIT_CARD
+  DEBIT_CARD
+  E_WALLET
+  INVESTMENT
+  LOAN
+}
+
 model Account {
-  account_id  String  @id @default(uuid(7)) @db.Uuid
-  space_id    String  @db.Uuid
+  account_id  String       @id @default(uuid(7)) @db.Uuid
+  space_id    String       @db.Uuid
   name        String
   description String?
-  currency    String? @default("IDR")
-  balance     Float?  @default(0)
+  currency    String?      @default("IDR")
+  balance     Float?       @default(0)
+  type        Account_type @default(CASH)
 
   icon     String?
   color    String?
@@ -141,10 +152,15 @@ model Subcategory {
 }
 
 model Transaction {
-  transaction_id String  @id @default(uuid(7)) @db.Uuid
-  account_id     String  @db.Uuid
+  transaction_id String    @id @default(uuid(7)) @db.Uuid
+  account_id     String    @db.Uuid
   title          String
   note           String?
+  category_id    String?   @db.Uuid
+  amount         Float     @default(0)
+  date           DateTime  @default(now())
+  created_at     DateTime  @default(now())
+  updated_at     DateTime? @updatedAt
 
   model Transaction_model @default(TRANSACTION)
   type  Transaction_type

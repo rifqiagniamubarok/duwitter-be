@@ -1,7 +1,7 @@
-import express, { type Response, type Request } from 'express';
+import express, { type Request, type Response } from 'express';
 import { auth_middleware } from '../middleware/auth_middleware';
 import { fullauth_middleware } from '../middleware/fullauth_middleware';
-import { account_example } from '../controller/account';
+import { account_example, create_account } from '../controller/account';
 
 export const protected_router = express.Router();
 
@@ -10,7 +10,7 @@ const router = protected_router;
 router.use(auth_middleware);
 router.use(fullauth_middleware);
 
-router.get('/testing', async (req: Request, res: Response) => {
+router.get('/protected-api-test', async (req: Request, res: Response) => {
   res.status(200).json({
     ok: true,
     user_id: req.user_id,
@@ -22,3 +22,4 @@ router.get('/testing', async (req: Request, res: Response) => {
 
 // ############## ----- Accounts ----- ##############
 router.get('/account/example', account_example);
+router.post('/account/create', create_account);
