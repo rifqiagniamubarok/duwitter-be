@@ -1,14 +1,15 @@
 import express from 'express';
-import { login, register } from '../controller/user';
+import { login, login_remember, register } from '../controller/user';
 
-export const publicRouter = express.Router();
+export const public_router = express.Router();
 
-const router = publicRouter;
+const router = public_router;
 
 router.get('/test', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
-// AUTH
-router.post('/register', register);
-router.post('/login', login);
+// ############## ----- AUTH ----- ##############
+router.post('/auth/register', register);
+router.post('/auth/login', login);
+router.post('/auth/login-remember', login_remember);

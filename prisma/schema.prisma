@@ -15,11 +15,13 @@ datasource db {
 }
 
 model User {
-  id                String   @id @default(uuid(7)) @db.Uuid
+  user_id           String   @id @default(uuid(7)) @db.Uuid
   first_name        String
   last_name         String
   email             String   @unique
   password          String?
+
+  image             String?
   birth_date        DateTime?
   birth_place       String?
   phone_number      String?
@@ -42,11 +44,11 @@ model User {
 
   @@map("users")
   @@index([email], name: "idx_users_email")
-  @@index([id], name: "idx_users_id")
+  @@index([user_id], name: "idx_users_id")
 }
 
 model Space {
-  id                String   @id @default(uuid(7)) @db.Uuid
+  space_id                String   @id @default(uuid(7)) @db.Uuid
   name              String
   description       String?
   is_personal       Boolean  @default(false)
@@ -55,17 +57,15 @@ model Space {
   created_at        DateTime @default(now())
   updated_at        DateTime? @updatedAt
 
-  owner             User     @relation(fields: [owner_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  owner             User     @relation(fields: [owner_id], references: [user_id], onDelete: Cascade, onUpdate: Cascade)
   space_members     SpaceMember[]
-
-
+  accounts          Account[]
 
   @@map("spaces")
-
 }
 
 model SpaceMember {
-  id                String   @id @default(uuid(7)) @db.Uuid
+  space_member_id   String   @id @default(uuid(7)) @db.Uuid
   space_id          String   @db.Uuid
   user_id           String   @db.Uuid
   is_default        Boolean  @default(false)
@@ -73,8 +73,79 @@ model SpaceMember {
   created_at        DateTime @default(now())
   updated_at        DateTime? @updatedAt
 
-  space             Space    @relation(fields: [space_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  user              User     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  space             Space    @relation(fields: [space_id], references: [space_id], onDelete: Cascade, onUpdate: Cascade)
+  user              User     @relation(fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: Cascade)
 
   @@map("space_members")
+}
+
+model Account{
+  account_id          String @id @default(uuid(7)) @db.Uuid
+  space_id            String @db.Uuid
+  name                String
+  description         String?
+  currency            String? @default("IDR")
+  balance             Float? @default(0)
+
+  icon                String?
+  color               String?
+  bg_color            String?
+
+  space               Space    @relation(fields: [space_id], references: [space_id], onDelete: Cascade, onUpdate: Cascade)
+  @@map("accounts")
+}
+
+model Account_example {
+  account_example_id  String @id @default(uuid(7)) @db.Uuid
+  name                String @unique
+  description         String?
+  currency            String @default("IDR")
+  type                String @default("bank")
+
+  icon                String
+  color               String
+  bg_color            String
+}
+
+enum Transaction_model {
+  TRANSACTION
+  TRANSFER
+}
+
+enum Transaction_type {
+  INCOME
+  EXPENSE
+}
+
+model Category {
+  category_id         String @id @default(uuid(7)) @db.Uuid
+  name                String
+  description         String?
+  type                Transaction_type
+
+  subcategories       Subcategory[]
+
+  @@map("categories")
+}
+
+model Subcategory {
+  subcategory_id      String @id @default(uuid(7)) @db.Uuid
+  category_id         String @db.Uuid
+  name                String
+  description         String?      
+
+  category            Category  @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("subcategories")
+}
+model Transaction{
+  transaction_id      String @id @default(uuid(7)) @db.Uuid
+  account_id          String @db.Uuid
+  title               String
+  note                String?
+
+  model               Transaction_model @default(TRANSACTION)
+  type                Transaction_type
+
+  @@map("transactions")
 }

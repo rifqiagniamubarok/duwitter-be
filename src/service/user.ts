@@ -2,7 +2,7 @@ import { request } from 'express';
 import { prisma } from '../lib/prisma';
 import { Response_error } from '../utils/response_error';
 import { password } from 'bun';
-import { signJwt, verifyJwt } from '../utils/jwt';
+import { sign_jwt, verify_token, type token_payload } from '../utils/jwt';
 
 type create_user_payload = {
   first_name: string;
@@ -31,7 +31,7 @@ export const create_new_user = async (request: create_user_payload) => {
     const user = await tx.user.create({
       data: request,
       select: {
-        id: true,
+        user_id: true,
         first_name: true,
         last_name: true,
         email: true,
@@ -43,12 +43,12 @@ export const create_new_user = async (request: create_user_payload) => {
       data: {
         name: `${request.first_name}'s Space`,
         is_personal: true,
-        owner_id: user.id,
+        owner_id: user.user_id,
         space_members: {
           createMany: {
             data: [
               {
-                user_id: user.id,
+                user_id: user.user_id,
                 is_default: true,
               },
             ],
@@ -56,25 +56,25 @@ export const create_new_user = async (request: create_user_payload) => {
         },
       },
       select: {
-        id: true,
+        space_id: true,
         name: true,
       },
     });
 
     await tx.user.update({
-      where: { id: user.id },
+      where: { user_id: user.user_id },
       data: {
-        default_space_id: space.id,
+        default_space_id: space.space_id,
       },
     });
 
-    return { ...user, space: { id: space.id, name: space.name } };
+    return { ...user, space_id: space.space_id, space_name: space.name };
   });
 
   return result;
 };
 
-export const login_user = async (request: { email: string; password: string | null; reset_token: string | null }) => {
+export const login_user_with_password = async (request: { email: string; password: string; remember_me: 'Y' | 'N' }) => {
   const result = await prisma.$transaction(async (tx) => {
     const user = await tx.user.findUnique({
       where: {
@@ -82,30 +82,20 @@ export const login_user = async (request: { email: string; password: string | nu
       },
     });
 
-    // Check login method
-    let is_using_password = true;
-    if (!request.password) is_using_password = false;
-
+    // Check user availibility
     if (!user || !user.password || user.default_space_id === null) {
       throw new Response_error(400, 'Invalid email or password');
     }
 
-    if (is_using_password && request.password) {
-      const is_password_valid = await password.verify(request.password, user.password);
+    const is_password_valid = await password.verify(request.password, user.password);
 
-      if (!is_password_valid) {
-        throw new Response_error(400, 'Invalid email or password');
-      }
-    } else if (!is_using_password) {
-      if (!request.reset_token) throw new Response_error(404, 'Invalid email or password');
-      await verifyJwt(user.remember_token as string);
-
-      if (user.current_token !== request.reset_token) throw new Response_error(400, 'Invalid email or password');
+    if (!is_password_valid) {
+      throw new Response_error(400, 'Invalid email or password');
     }
 
     const space = await tx.space.findFirst({
       where: {
-        id: user.default_space_id,
+        space_id: user.default_space_id,
       },
     });
 
@@ -115,22 +105,29 @@ export const login_user = async (request: { email: string; password: string | nu
       is_profile_required = true;
     }
 
-    const token_payload = {
+    if (!space || !space.space_id || !space.name) throw new Response_error(400, 'Invalid email or password');
+
+    const token_payload: token_payload = {
       email: user.email,
-      id: user.id,
+      user_id: user.user_id,
       first_name: user.first_name,
       last_name: user.last_name,
       is_profile_required,
-      space: { id: space?.id, name: space?.name },
+      space_id: space.space_id,
+      space_name: space.name,
     };
 
-    const token = await signJwt(token_payload);
-    const remember_token = await signJwt(token_payload, 60 * 60 * 3 + 60 * 5); // remember token 3 hour + 5 menuites
+    const token = sign_jwt(token_payload);
+    let remember_token = null;
+
+    if (request.remember_me == 'Y') {
+      remember_token = sign_jwt(token_payload, 60 * 60 * 24 * 30); // remember token for 30 days
+    }
 
     // update remember token and token in db
     await tx.user.update({
       where: {
-        id: user.id,
+        user_id: user.user_id,
       },
       data: {
         remember_token,
@@ -140,11 +137,61 @@ export const login_user = async (request: { email: string; password: string | nu
 
     const response = {
       email: user.email,
-      id: user.id,
+      user_id: user.user_id,
       first_name: user.first_name,
       last_name: user.last_name,
       is_profile_required,
-      space: { id: space?.id, name: space?.name },
+      space_id: space?.space_id,
+      space_name: space?.name,
+      token,
+    };
+
+    return response;
+  });
+
+  return result;
+};
+
+export const login_user_with_remember_token = async (request: { email: string; token: string }) => {
+  const result = await prisma.$transaction(async (tx) => {
+    const user = await tx.user.findUnique({
+      where: {
+        email: request.email,
+      },
+      select: {
+        user_id: true,
+        remember_token: true,
+        current_token: true,
+      },
+    });
+
+    // Check user availibility
+    if (!user || !user.remember_token) {
+      throw new Response_error(400, 'Invalid email or password');
+    }
+
+    if (user.current_token !== request.token) {
+      throw new Response_error(400, 'Invalid email or password');
+    }
+
+    // Verify remember token
+    const remember_token_decoded = await verify_token(user.remember_token);
+    if (!remember_token_decoded.ok || remember_token_decoded.data == null) throw new Response_error(400, 'Your session has expired');
+
+    const token = sign_jwt(remember_token_decoded.data);
+
+    // update remember token and token in db
+    await tx.user.update({
+      where: {
+        user_id: user.user_id,
+      },
+      data: {
+        current_token: token,
+      },
+    });
+
+    const response = {
+      ...remember_token_decoded.data,
       token,
     };
 

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "bun build src/server.ts --outdir=dist",
     "start": "bun run build && bun dist/server.js",
-    "dev": "bun --watch server.ts"
+    "dev": "bun --watch server.ts",
+    "seed": "bun run prisma/seed.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",

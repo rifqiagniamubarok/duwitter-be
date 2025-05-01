@@ -14,12 +14,11 @@ const reset_db = async (email: string) => {
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 describe('auth test', () => {
-  const api_url = '/api/v1';
+  const api_url = '/api/v1/auth';
   const first_name = 'test';
   const last_name = 'last_name';
   const email = 'test@yopmail.com';
   let password = 'testtest';
-  let past_token = '';
   let token = '';
 
   // afterAll(async () => {
@@ -92,29 +91,68 @@ describe('auth test', () => {
     const response = await supertest(app).post(`${api_url}/login`).send({
       email,
       password: password,
+      remember_me: 'N',
     });
 
     token = response.body.data.token;
 
     expect(response.status).toBe(200);
+  });
+
+  test('NC: fail login with reset token without remember me before ', async () => {
+    const { status } = await supertest(app).post(`${api_url}/login-remember`).send({
+      email,
+      token: token,
+    });
+
+    expect(status).toBe(400);
+  });
+
+  test('PC: login with password with remember me', async () => {
+    const { status, body } = await supertest(app).post(`${api_url}/login`).send({
+      email,
+      password: password,
+      remember_me: 'Y',
+    });
+
+    token = body.data.token;
+
+    expect(status).toBe(200);
     await sleep(1000);
   });
 
   test('PC: login with reset token ', async () => {
-    const response = await supertest(app).post(`${api_url}/login`).send({
+    const { status } = await supertest(app).post(`${api_url}/login-remember`).send({
       email,
-      reset_token: token,
+      token: token,
     });
 
-    expect(response.status).toBe(200);
+    expect(status).toBe(200);
   });
 
-  test('NC: login with reset wrong token ', async () => {
-    const response = await supertest(app).post(`${api_url}/login`).send({
+  test('PC: re-login with password with remember me', async () => {
+    const { status } = await supertest(app).post(`${api_url}/login`).send({
       email,
-      reset_token: token,
+      password: password,
+      remember_me: 'Y',
     });
 
-    expect(response.status).toBe(400);
+    expect(status).toBe(200);
+  });
+
+  test('NC: login with wrong token (past token)', async () => {
+    const { status, body } = await supertest(app).post(`${api_url}/login-remember`).send({
+      email,
+      token: token,
+    });
+
+    expect(status).toBe(400);
+  });
+
+  test('PC: test api with token', async () => {
+    const { status, body } = await supertest(app).get(`/api/v1/testing`).set('Authorization', `Bearer ${token}`);
+
+    console.log({ body });
+    expect(status).toBe(200);
   });
 });

@@ -118,11 +118,12 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.UserScalarFieldEnum = {
-  id: 'id',
+  user_id: 'user_id',
   first_name: 'first_name',
   last_name: 'last_name',
   email: 'email',
   password: 'password',
+  image: 'image',
   birth_date: 'birth_date',
   birth_place: 'birth_place',
   phone_number: 'phone_number',
@@ -139,7 +140,7 @@ exports.Prisma.UserScalarFieldEnum = {
 };
 
 exports.Prisma.SpaceScalarFieldEnum = {
-  id: 'id',
+  space_id: 'space_id',
   name: 'name',
   description: 'description',
   is_personal: 'is_personal',
@@ -149,12 +150,58 @@ exports.Prisma.SpaceScalarFieldEnum = {
 };
 
 exports.Prisma.SpaceMemberScalarFieldEnum = {
-  id: 'id',
+  space_member_id: 'space_member_id',
   space_id: 'space_id',
   user_id: 'user_id',
   is_default: 'is_default',
   created_at: 'created_at',
   updated_at: 'updated_at'
+};
+
+exports.Prisma.AccountScalarFieldEnum = {
+  account_id: 'account_id',
+  space_id: 'space_id',
+  name: 'name',
+  description: 'description',
+  currency: 'currency',
+  balance: 'balance',
+  icon: 'icon',
+  color: 'color',
+  bg_color: 'bg_color'
+};
+
+exports.Prisma.Account_exampleScalarFieldEnum = {
+  account_example_id: 'account_example_id',
+  name: 'name',
+  description: 'description',
+  currency: 'currency',
+  type: 'type',
+  icon: 'icon',
+  color: 'color',
+  bg_color: 'bg_color'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  category_id: 'category_id',
+  name: 'name',
+  description: 'description',
+  type: 'type'
+};
+
+exports.Prisma.SubcategoryScalarFieldEnum = {
+  subcategory_id: 'subcategory_id',
+  category_id: 'category_id',
+  name: 'name',
+  description: 'description'
+};
+
+exports.Prisma.TransactionScalarFieldEnum = {
+  transaction_id: 'transaction_id',
+  account_id: 'account_id',
+  title: 'title',
+  note: 'note',
+  model: 'model',
+  type: 'type'
 };
 
 exports.Prisma.SortOrder = {
@@ -171,12 +218,25 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.Transaction_type = exports.$Enums.Transaction_type = {
+  INCOME: 'INCOME',
+  EXPENSE: 'EXPENSE'
+};
 
+exports.Transaction_model = exports.$Enums.Transaction_model = {
+  TRANSACTION: 'TRANSACTION',
+  TRANSFER: 'TRANSFER'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
   Space: 'Space',
-  SpaceMember: 'SpaceMember'
+  SpaceMember: 'SpaceMember',
+  Account: 'Account',
+  Account_example: 'Account_example',
+  Category: 'Category',
+  Subcategory: 'Subcategory',
+  Transaction: 'Transaction'
 };
 
 /**
