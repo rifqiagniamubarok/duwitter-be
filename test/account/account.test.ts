@@ -7,6 +7,7 @@ import { clear_token_auth_for_testing, get_token_auth_for_testing } from '../aut
 describe('account testing', () => {
   const api_url = '/api/v1/account';
   let token = '';
+  let account_id = '';
 
   beforeAll(async () => {
     await clear_token_auth_for_testing();
@@ -31,14 +32,54 @@ describe('account testing', () => {
 
   test('PC: create account', async () => {
     const { body, status } = await supertest(app)
-      .post(`${api_url}/create`)
+      .post(`${api_url}`)
       .set('Authorization', `Bearer ${token}`)
       .send({
         ...account_payload,
       });
 
-    console.log({ body });
+    account_id = body.data.account_id;
 
+    expect(status).toBe(200);
+  });
+
+  test('NC: create account with invalid type', async () => {
+    const { body, status } = await supertest(app)
+      .post(`${api_url}`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        ...account_payload,
+        type: 'DEBIT_WRONG',
+      });
+
+    expect(status).toBe(400);
+  });
+
+  test('PC: edit account', async () => {
+    account_payload.name = 'BCA 2';
+    const { body, status } = await supertest(app)
+      .put(`${api_url}/${account_id}`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        ...account_payload,
+      });
+
+    expect(body.data.name).toBe(account_payload.name);
+    expect(status).toBe(200);
+  });
+
+  test('PC: get all acount', async () => {
+    const { body, status } = await supertest(app).get(`${api_url}`).set('Authorization', `Bearer ${token}`);
+    expect(body).toEqual({
+      success: true,
+      data: expect.any(Array),
+    });
+    expect(status).toBe(200);
+  });
+
+  test('PC: get detail acount', async () => {
+    const { body, status } = await supertest(app).get(`${api_url}/${account_id}`).set('Authorization', `Bearer ${token}`);
+    expect(body.data.name).toBe(account_payload.name);
     expect(status).toBe(200);
   });
 });
