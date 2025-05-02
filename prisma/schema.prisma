@@ -67,6 +67,7 @@ model Space {
   owner             User     @relation(fields: [owner_id], references: [user_id], onDelete: Cascade, onUpdate: Cascade)
   space_members     SpaceMember[]
   accounts          Account[]
+  categories        Category[]
 
   @@map("spaces")
 }
@@ -137,12 +138,14 @@ enum Transaction_type {
 
 model Category {
   category_id         String @id @default(uuid(7)) @db.Uuid
+  space_id            String @db.Uuid
   name                String
   description         String?
   type                Transaction_type
   icon                String? 
 
   subcategories       Subcategory[]
+  space               Space    @relation(fields: [space_id], references: [space_id], onDelete: Cascade, onUpdate: Cascade)
 
   @@map("categories")
 }

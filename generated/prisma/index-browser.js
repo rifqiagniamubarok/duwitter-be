@@ -185,6 +185,7 @@ exports.Prisma.Account_exampleScalarFieldEnum = {
 
 exports.Prisma.CategoryScalarFieldEnum = {
   category_id: 'category_id',
+  space_id: 'space_id',
   name: 'name',
   description: 'description',
   type: 'type',
