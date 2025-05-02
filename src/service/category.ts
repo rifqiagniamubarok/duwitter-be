@@ -12,7 +12,7 @@ interface CategoryRequest {
   description: string | null;
   icon: string | null;
   type: Transaction_type;
-  subcategories: SubcategoryRequest[] | null;
+  subcategories: SubcategoryRequest[] | [];
 }
 
 export const create_new_category = async (space_id: string, request: CategoryRequest) => {
@@ -24,22 +24,23 @@ export const create_new_category = async (space_id: string, request: CategoryReq
         icon: request.icon,
         type: request.type,
         space_id,
+        subcategories: {
+          createMany: {
+            data: request.subcategories?.map((subcategory) => ({
+              name: subcategory.name,
+              description: subcategory.description,
+              icon: subcategory.icon,
+            })),
+          },
+        },
+      },
+      include: {
+        subcategories: true,
       },
     });
 
-    if (request.subcategories) {
-      for (const subcategory of request.subcategories) {
-        await tx.subcategory.create({
-          data: {
-            name: subcategory.name,
-            description: subcategory.description,
-            icon: subcategory.icon,
-            category_id: category.category_id,
-          },
-        });
-      }
-    }
-
     return category;
   });
+
+  return result;
 };
