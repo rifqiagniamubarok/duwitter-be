@@ -140,6 +140,7 @@ model Category {
   name                String
   description         String?
   type                Transaction_type
+  icon                String? 
 
   subcategories       Subcategory[]
 
@@ -151,6 +152,7 @@ model Subcategory {
   category_id         String @db.Uuid
   name                String
   description         String?      
+  icon                String?
 
   category            Category  @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: Cascade)
 

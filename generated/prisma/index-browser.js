@@ -136,7 +136,8 @@ exports.Prisma.UserScalarFieldEnum = {
   current_token: 'current_token',
   default_space_id: 'default_space_id',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  plan: 'plan'
 };
 
 exports.Prisma.SpaceScalarFieldEnum = {
@@ -186,14 +187,16 @@ exports.Prisma.CategoryScalarFieldEnum = {
   category_id: 'category_id',
   name: 'name',
   description: 'description',
-  type: 'type'
+  type: 'type',
+  icon: 'icon'
 };
 
 exports.Prisma.SubcategoryScalarFieldEnum = {
   subcategory_id: 'subcategory_id',
   category_id: 'category_id',
   name: 'name',
-  description: 'description'
+  description: 'description',
+  icon: 'icon'
 };
 
 exports.Prisma.TransactionScalarFieldEnum = {
@@ -224,6 +227,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.Plan = exports.$Enums.Plan = {
+  FREE: 'FREE',
+  PRO: 'PRO'
+};
+
 exports.Account_type = exports.$Enums.Account_type = {
   CASH: 'CASH',
   BANK: 'BANK',

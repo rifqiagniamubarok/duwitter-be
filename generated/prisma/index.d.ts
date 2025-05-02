@@ -58,7 +58,15 @@ export type Transaction = $Result.DefaultSelection<Prisma.$TransactionPayload>
  * Enums
  */
 export namespace $Enums {
-  export const Account_type: {
+  export const Plan: {
+  FREE: 'FREE',
+  PRO: 'PRO'
+};
+
+export type Plan = (typeof Plan)[keyof typeof Plan]
+
+
+export const Account_type: {
   CASH: 'CASH',
   BANK: 'BANK',
   CREDIT_CARD: 'CREDIT_CARD',
@@ -87,6 +95,10 @@ export const Transaction_type: {
 export type Transaction_type = (typeof Transaction_type)[keyof typeof Transaction_type]
 
 }
+
+export type Plan = $Enums.Plan
+
+export const Plan: typeof $Enums.Plan
 
 export type Account_type = $Enums.Account_type
 
@@ -1692,6 +1704,7 @@ export namespace Prisma {
     default_space_id: string | null
     created_at: Date | null
     updated_at: Date | null
+    plan: $Enums.Plan | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1714,6 +1727,7 @@ export namespace Prisma {
     default_space_id: string | null
     created_at: Date | null
     updated_at: Date | null
+    plan: $Enums.Plan | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1736,6 +1750,7 @@ export namespace Prisma {
     default_space_id: number
     created_at: number
     updated_at: number
+    plan: number
     _all: number
   }
 
@@ -1760,6 +1775,7 @@ export namespace Prisma {
     default_space_id?: true
     created_at?: true
     updated_at?: true
+    plan?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1782,6 +1798,7 @@ export namespace Prisma {
     default_space_id?: true
     created_at?: true
     updated_at?: true
+    plan?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1804,6 +1821,7 @@ export namespace Prisma {
     default_space_id?: true
     created_at?: true
     updated_at?: true
+    plan?: true
     _all?: true
   }
 
@@ -1899,6 +1917,7 @@ export namespace Prisma {
     default_space_id: string | null
     created_at: Date
     updated_at: Date | null
+    plan: $Enums.Plan
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1938,6 +1957,7 @@ export namespace Prisma {
     default_space_id?: boolean
     created_at?: boolean
     updated_at?: boolean
+    plan?: boolean
     space_owned?: boolean | User$space_ownedArgs<ExtArgs>
     spaces?: boolean | User$spacesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1963,6 +1983,7 @@ export namespace Prisma {
     default_space_id?: boolean
     created_at?: boolean
     updated_at?: boolean
+    plan?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1985,6 +2006,7 @@ export namespace Prisma {
     default_space_id?: boolean
     created_at?: boolean
     updated_at?: boolean
+    plan?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -2007,9 +2029,10 @@ export namespace Prisma {
     default_space_id?: boolean
     created_at?: boolean
     updated_at?: boolean
+    plan?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"user_id" | "first_name" | "last_name" | "email" | "password" | "image" | "birth_date" | "birth_place" | "phone_number" | "country" | "city" | "address" | "q1" | "q2" | "remember_token" | "current_token" | "default_space_id" | "created_at" | "updated_at", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"user_id" | "first_name" | "last_name" | "email" | "password" | "image" | "birth_date" | "birth_place" | "phone_number" | "country" | "city" | "address" | "q1" | "q2" | "remember_token" | "current_token" | "default_space_id" | "created_at" | "updated_at" | "plan", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     space_owned?: boolean | User$space_ownedArgs<ExtArgs>
     spaces?: boolean | User$spacesArgs<ExtArgs>
@@ -2044,6 +2067,7 @@ export namespace Prisma {
       default_space_id: string | null
       created_at: Date
       updated_at: Date | null
+      plan: $Enums.Plan
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2488,6 +2512,7 @@ export namespace Prisma {
     readonly default_space_id: FieldRef<"User", 'String'>
     readonly created_at: FieldRef<"User", 'DateTime'>
     readonly updated_at: FieldRef<"User", 'DateTime'>
+    readonly plan: FieldRef<"User", 'Plan'>
   }
     
 
@@ -7369,6 +7394,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     type: $Enums.Transaction_type | null
+    icon: string | null
   }
 
   export type CategoryMaxAggregateOutputType = {
@@ -7376,6 +7402,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     type: $Enums.Transaction_type | null
+    icon: string | null
   }
 
   export type CategoryCountAggregateOutputType = {
@@ -7383,6 +7410,7 @@ export namespace Prisma {
     name: number
     description: number
     type: number
+    icon: number
     _all: number
   }
 
@@ -7392,6 +7420,7 @@ export namespace Prisma {
     name?: true
     description?: true
     type?: true
+    icon?: true
   }
 
   export type CategoryMaxAggregateInputType = {
@@ -7399,6 +7428,7 @@ export namespace Prisma {
     name?: true
     description?: true
     type?: true
+    icon?: true
   }
 
   export type CategoryCountAggregateInputType = {
@@ -7406,6 +7436,7 @@ export namespace Prisma {
     name?: true
     description?: true
     type?: true
+    icon?: true
     _all?: true
   }
 
@@ -7486,6 +7517,7 @@ export namespace Prisma {
     name: string
     description: string | null
     type: $Enums.Transaction_type
+    icon: string | null
     _count: CategoryCountAggregateOutputType | null
     _min: CategoryMinAggregateOutputType | null
     _max: CategoryMaxAggregateOutputType | null
@@ -7510,6 +7542,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     type?: boolean
+    icon?: boolean
     subcategories?: boolean | Category$subcategoriesArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
@@ -7519,6 +7552,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     type?: boolean
+    icon?: boolean
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7526,6 +7560,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     type?: boolean
+    icon?: boolean
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectScalar = {
@@ -7533,9 +7568,10 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     type?: boolean
+    icon?: boolean
   }
 
-  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"category_id" | "name" | "description" | "type", ExtArgs["result"]["category"]>
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"category_id" | "name" | "description" | "type" | "icon", ExtArgs["result"]["category"]>
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     subcategories?: boolean | Category$subcategoriesArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
@@ -7553,6 +7589,7 @@ export namespace Prisma {
       name: string
       description: string | null
       type: $Enums.Transaction_type
+      icon: string | null
     }, ExtArgs["result"]["category"]>
     composites: {}
   }
@@ -7981,6 +8018,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Category", 'String'>
     readonly description: FieldRef<"Category", 'String'>
     readonly type: FieldRef<"Category", 'Transaction_type'>
+    readonly icon: FieldRef<"Category", 'String'>
   }
     
 
@@ -8426,6 +8464,7 @@ export namespace Prisma {
     category_id: string | null
     name: string | null
     description: string | null
+    icon: string | null
   }
 
   export type SubcategoryMaxAggregateOutputType = {
@@ -8433,6 +8472,7 @@ export namespace Prisma {
     category_id: string | null
     name: string | null
     description: string | null
+    icon: string | null
   }
 
   export type SubcategoryCountAggregateOutputType = {
@@ -8440,6 +8480,7 @@ export namespace Prisma {
     category_id: number
     name: number
     description: number
+    icon: number
     _all: number
   }
 
@@ -8449,6 +8490,7 @@ export namespace Prisma {
     category_id?: true
     name?: true
     description?: true
+    icon?: true
   }
 
   export type SubcategoryMaxAggregateInputType = {
@@ -8456,6 +8498,7 @@ export namespace Prisma {
     category_id?: true
     name?: true
     description?: true
+    icon?: true
   }
 
   export type SubcategoryCountAggregateInputType = {
@@ -8463,6 +8506,7 @@ export namespace Prisma {
     category_id?: true
     name?: true
     description?: true
+    icon?: true
     _all?: true
   }
 
@@ -8543,6 +8587,7 @@ export namespace Prisma {
     category_id: string
     name: string
     description: string | null
+    icon: string | null
     _count: SubcategoryCountAggregateOutputType | null
     _min: SubcategoryMinAggregateOutputType | null
     _max: SubcategoryMaxAggregateOutputType | null
@@ -8567,6 +8612,7 @@ export namespace Prisma {
     category_id?: boolean
     name?: boolean
     description?: boolean
+    icon?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subcategory"]>
 
@@ -8575,6 +8621,7 @@ export namespace Prisma {
     category_id?: boolean
     name?: boolean
     description?: boolean
+    icon?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subcategory"]>
 
@@ -8583,6 +8630,7 @@ export namespace Prisma {
     category_id?: boolean
     name?: boolean
     description?: boolean
+    icon?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subcategory"]>
 
@@ -8591,9 +8639,10 @@ export namespace Prisma {
     category_id?: boolean
     name?: boolean
     description?: boolean
+    icon?: boolean
   }
 
-  export type SubcategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"subcategory_id" | "category_id" | "name" | "description", ExtArgs["result"]["subcategory"]>
+  export type SubcategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"subcategory_id" | "category_id" | "name" | "description" | "icon", ExtArgs["result"]["subcategory"]>
   export type SubcategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
   }
@@ -8614,6 +8663,7 @@ export namespace Prisma {
       category_id: string
       name: string
       description: string | null
+      icon: string | null
     }, ExtArgs["result"]["subcategory"]>
     composites: {}
   }
@@ -9042,6 +9092,7 @@ export namespace Prisma {
     readonly category_id: FieldRef<"Subcategory", 'String'>
     readonly name: FieldRef<"Subcategory", 'String'>
     readonly description: FieldRef<"Subcategory", 'String'>
+    readonly icon: FieldRef<"Subcategory", 'String'>
   }
     
 
@@ -10596,7 +10647,8 @@ export namespace Prisma {
     current_token: 'current_token',
     default_space_id: 'default_space_id',
     created_at: 'created_at',
-    updated_at: 'updated_at'
+    updated_at: 'updated_at',
+    plan: 'plan'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -10661,7 +10713,8 @@ export namespace Prisma {
     category_id: 'category_id',
     name: 'name',
     description: 'description',
-    type: 'type'
+    type: 'type',
+    icon: 'icon'
   };
 
   export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
@@ -10671,7 +10724,8 @@ export namespace Prisma {
     subcategory_id: 'subcategory_id',
     category_id: 'category_id',
     name: 'name',
-    description: 'description'
+    description: 'description',
+    icon: 'icon'
   };
 
   export type SubcategoryScalarFieldEnum = (typeof SubcategoryScalarFieldEnum)[keyof typeof SubcategoryScalarFieldEnum]
@@ -10748,6 +10802,20 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Plan'
+   */
+  export type EnumPlanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Plan'>
+    
+
+
+  /**
+   * Reference to a field of type 'Plan[]'
+   */
+  export type ListEnumPlanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Plan[]'>
     
 
 
@@ -10854,6 +10922,7 @@ export namespace Prisma {
     default_space_id?: UuidNullableFilter<"User"> | string | null
     created_at?: DateTimeFilter<"User"> | Date | string
     updated_at?: DateTimeNullableFilter<"User"> | Date | string | null
+    plan?: EnumPlanFilter<"User"> | $Enums.Plan
     space_owned?: SpaceListRelationFilter
     spaces?: SpaceMemberListRelationFilter
   }
@@ -10878,6 +10947,7 @@ export namespace Prisma {
     default_space_id?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
+    plan?: SortOrder
     space_owned?: SpaceOrderByRelationAggregateInput
     spaces?: SpaceMemberOrderByRelationAggregateInput
   }
@@ -10905,6 +10975,7 @@ export namespace Prisma {
     default_space_id?: UuidNullableFilter<"User"> | string | null
     created_at?: DateTimeFilter<"User"> | Date | string
     updated_at?: DateTimeNullableFilter<"User"> | Date | string | null
+    plan?: EnumPlanFilter<"User"> | $Enums.Plan
     space_owned?: SpaceListRelationFilter
     spaces?: SpaceMemberListRelationFilter
   }, "user_id" | "email">
@@ -10929,6 +11000,7 @@ export namespace Prisma {
     default_space_id?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
+    plan?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -10957,6 +11029,7 @@ export namespace Prisma {
     default_space_id?: UuidNullableWithAggregatesFilter<"User"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updated_at?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    plan?: EnumPlanWithAggregatesFilter<"User"> | $Enums.Plan
   }
 
   export type SpaceWhereInput = {
@@ -11250,6 +11323,7 @@ export namespace Prisma {
     name?: StringFilter<"Category"> | string
     description?: StringNullableFilter<"Category"> | string | null
     type?: EnumTransaction_typeFilter<"Category"> | $Enums.Transaction_type
+    icon?: StringNullableFilter<"Category"> | string | null
     subcategories?: SubcategoryListRelationFilter
   }
 
@@ -11258,6 +11332,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     type?: SortOrder
+    icon?: SortOrderInput | SortOrder
     subcategories?: SubcategoryOrderByRelationAggregateInput
   }
 
@@ -11269,6 +11344,7 @@ export namespace Prisma {
     name?: StringFilter<"Category"> | string
     description?: StringNullableFilter<"Category"> | string | null
     type?: EnumTransaction_typeFilter<"Category"> | $Enums.Transaction_type
+    icon?: StringNullableFilter<"Category"> | string | null
     subcategories?: SubcategoryListRelationFilter
   }, "category_id">
 
@@ -11277,6 +11353,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     type?: SortOrder
+    icon?: SortOrderInput | SortOrder
     _count?: CategoryCountOrderByAggregateInput
     _max?: CategoryMaxOrderByAggregateInput
     _min?: CategoryMinOrderByAggregateInput
@@ -11290,6 +11367,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Category"> | string
     description?: StringNullableWithAggregatesFilter<"Category"> | string | null
     type?: EnumTransaction_typeWithAggregatesFilter<"Category"> | $Enums.Transaction_type
+    icon?: StringNullableWithAggregatesFilter<"Category"> | string | null
   }
 
   export type SubcategoryWhereInput = {
@@ -11300,6 +11378,7 @@ export namespace Prisma {
     category_id?: UuidFilter<"Subcategory"> | string
     name?: StringFilter<"Subcategory"> | string
     description?: StringNullableFilter<"Subcategory"> | string | null
+    icon?: StringNullableFilter<"Subcategory"> | string | null
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
   }
 
@@ -11308,6 +11387,7 @@ export namespace Prisma {
     category_id?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
+    icon?: SortOrderInput | SortOrder
     category?: CategoryOrderByWithRelationInput
   }
 
@@ -11319,6 +11399,7 @@ export namespace Prisma {
     category_id?: UuidFilter<"Subcategory"> | string
     name?: StringFilter<"Subcategory"> | string
     description?: StringNullableFilter<"Subcategory"> | string | null
+    icon?: StringNullableFilter<"Subcategory"> | string | null
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
   }, "subcategory_id">
 
@@ -11327,6 +11408,7 @@ export namespace Prisma {
     category_id?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
+    icon?: SortOrderInput | SortOrder
     _count?: SubcategoryCountOrderByAggregateInput
     _max?: SubcategoryMaxOrderByAggregateInput
     _min?: SubcategoryMinOrderByAggregateInput
@@ -11340,6 +11422,7 @@ export namespace Prisma {
     category_id?: UuidWithAggregatesFilter<"Subcategory"> | string
     name?: StringWithAggregatesFilter<"Subcategory"> | string
     description?: StringNullableWithAggregatesFilter<"Subcategory"> | string | null
+    icon?: StringNullableWithAggregatesFilter<"Subcategory"> | string | null
   }
 
   export type TransactionWhereInput = {
@@ -11446,6 +11529,7 @@ export namespace Prisma {
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
+    plan?: $Enums.Plan
     space_owned?: SpaceCreateNestedManyWithoutOwnerInput
     spaces?: SpaceMemberCreateNestedManyWithoutUserInput
   }
@@ -11470,6 +11554,7 @@ export namespace Prisma {
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
+    plan?: $Enums.Plan
     space_owned?: SpaceUncheckedCreateNestedManyWithoutOwnerInput
     spaces?: SpaceMemberUncheckedCreateNestedManyWithoutUserInput
   }
@@ -11494,6 +11579,7 @@ export namespace Prisma {
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    plan?: EnumPlanFieldUpdateOperationsInput | $Enums.Plan
     space_owned?: SpaceUpdateManyWithoutOwnerNestedInput
     spaces?: SpaceMemberUpdateManyWithoutUserNestedInput
   }
@@ -11518,6 +11604,7 @@ export namespace Prisma {
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    plan?: EnumPlanFieldUpdateOperationsInput | $Enums.Plan
     space_owned?: SpaceUncheckedUpdateManyWithoutOwnerNestedInput
     spaces?: SpaceMemberUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -11542,6 +11629,7 @@ export namespace Prisma {
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
+    plan?: $Enums.Plan
   }
 
   export type UserUpdateManyMutationInput = {
@@ -11564,6 +11652,7 @@ export namespace Prisma {
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    plan?: EnumPlanFieldUpdateOperationsInput | $Enums.Plan
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -11586,6 +11675,7 @@ export namespace Prisma {
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    plan?: EnumPlanFieldUpdateOperationsInput | $Enums.Plan
   }
 
   export type SpaceCreateInput = {
@@ -11898,6 +11988,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     type: $Enums.Transaction_type
+    icon?: string | null
     subcategories?: SubcategoryCreateNestedManyWithoutCategoryInput
   }
 
@@ -11906,6 +11997,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     type: $Enums.Transaction_type
+    icon?: string | null
     subcategories?: SubcategoryUncheckedCreateNestedManyWithoutCategoryInput
   }
 
@@ -11914,6 +12006,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
     subcategories?: SubcategoryUpdateManyWithoutCategoryNestedInput
   }
 
@@ -11922,6 +12015,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
     subcategories?: SubcategoryUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
@@ -11930,6 +12024,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     type: $Enums.Transaction_type
+    icon?: string | null
   }
 
   export type CategoryUpdateManyMutationInput = {
@@ -11937,6 +12032,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CategoryUncheckedUpdateManyInput = {
@@ -11944,12 +12040,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SubcategoryCreateInput = {
     subcategory_id?: string
     name: string
     description?: string | null
+    icon?: string | null
     category: CategoryCreateNestedOneWithoutSubcategoriesInput
   }
 
@@ -11958,12 +12056,14 @@ export namespace Prisma {
     category_id: string
     name: string
     description?: string | null
+    icon?: string | null
   }
 
   export type SubcategoryUpdateInput = {
     subcategory_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
     category?: CategoryUpdateOneRequiredWithoutSubcategoriesNestedInput
   }
 
@@ -11972,6 +12072,7 @@ export namespace Prisma {
     category_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SubcategoryCreateManyInput = {
@@ -11979,12 +12080,14 @@ export namespace Prisma {
     category_id: string
     name: string
     description?: string | null
+    icon?: string | null
   }
 
   export type SubcategoryUpdateManyMutationInput = {
     subcategory_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SubcategoryUncheckedUpdateManyInput = {
@@ -11992,6 +12095,7 @@ export namespace Prisma {
     category_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TransactionCreateInput = {
@@ -12168,6 +12272,13 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type EnumPlanFilter<$PrismaModel = never> = {
+    equals?: $Enums.Plan | EnumPlanFieldRefInput<$PrismaModel>
+    in?: $Enums.Plan[] | ListEnumPlanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Plan[] | ListEnumPlanFieldRefInput<$PrismaModel>
+    not?: NestedEnumPlanFilter<$PrismaModel> | $Enums.Plan
+  }
+
   export type SpaceListRelationFilter = {
     every?: SpaceWhereInput
     some?: SpaceWhereInput
@@ -12213,6 +12324,7 @@ export namespace Prisma {
     default_space_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    plan?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -12235,6 +12347,7 @@ export namespace Prisma {
     default_space_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    plan?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -12257,6 +12370,7 @@ export namespace Prisma {
     default_space_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    plan?: SortOrder
   }
 
   export type UuidWithAggregatesFilter<$PrismaModel = never> = {
@@ -12351,6 +12465,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type EnumPlanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Plan | EnumPlanFieldRefInput<$PrismaModel>
+    in?: $Enums.Plan[] | ListEnumPlanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Plan[] | ListEnumPlanFieldRefInput<$PrismaModel>
+    not?: NestedEnumPlanWithAggregatesFilter<$PrismaModel> | $Enums.Plan
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPlanFilter<$PrismaModel>
+    _max?: NestedEnumPlanFilter<$PrismaModel>
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -12589,6 +12713,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     type?: SortOrder
+    icon?: SortOrder
   }
 
   export type CategoryMaxOrderByAggregateInput = {
@@ -12596,6 +12721,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     type?: SortOrder
+    icon?: SortOrder
   }
 
   export type CategoryMinOrderByAggregateInput = {
@@ -12603,6 +12729,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     type?: SortOrder
+    icon?: SortOrder
   }
 
   export type EnumTransaction_typeWithAggregatesFilter<$PrismaModel = never> = {
@@ -12625,6 +12752,7 @@ export namespace Prisma {
     category_id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    icon?: SortOrder
   }
 
   export type SubcategoryMaxOrderByAggregateInput = {
@@ -12632,6 +12760,7 @@ export namespace Prisma {
     category_id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    icon?: SortOrder
   }
 
   export type SubcategoryMinOrderByAggregateInput = {
@@ -12639,6 +12768,7 @@ export namespace Prisma {
     category_id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    icon?: SortOrder
   }
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -12777,6 +12907,10 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type EnumPlanFieldUpdateOperationsInput = {
+    set?: $Enums.Plan
   }
 
   export type SpaceUpdateManyWithoutOwnerNestedInput = {
@@ -13135,6 +13269,13 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedEnumPlanFilter<$PrismaModel = never> = {
+    equals?: $Enums.Plan | EnumPlanFieldRefInput<$PrismaModel>
+    in?: $Enums.Plan[] | ListEnumPlanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Plan[] | ListEnumPlanFieldRefInput<$PrismaModel>
+    not?: NestedEnumPlanFilter<$PrismaModel> | $Enums.Plan
+  }
+
   export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -13245,6 +13386,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPlanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Plan | EnumPlanFieldRefInput<$PrismaModel>
+    in?: $Enums.Plan[] | ListEnumPlanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Plan[] | ListEnumPlanFieldRefInput<$PrismaModel>
+    not?: NestedEnumPlanWithAggregatesFilter<$PrismaModel> | $Enums.Plan
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPlanFilter<$PrismaModel>
+    _max?: NestedEnumPlanFilter<$PrismaModel>
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -13500,6 +13651,7 @@ export namespace Prisma {
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
+    plan?: $Enums.Plan
     spaces?: SpaceMemberCreateNestedManyWithoutUserInput
   }
 
@@ -13523,6 +13675,7 @@ export namespace Prisma {
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
+    plan?: $Enums.Plan
     spaces?: SpaceMemberUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -13622,6 +13775,7 @@ export namespace Prisma {
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    plan?: EnumPlanFieldUpdateOperationsInput | $Enums.Plan
     spaces?: SpaceMemberUpdateManyWithoutUserNestedInput
   }
 
@@ -13645,6 +13799,7 @@ export namespace Prisma {
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    plan?: EnumPlanFieldUpdateOperationsInput | $Enums.Plan
     spaces?: SpaceMemberUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -13743,6 +13898,7 @@ export namespace Prisma {
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
+    plan?: $Enums.Plan
     space_owned?: SpaceCreateNestedManyWithoutOwnerInput
   }
 
@@ -13766,6 +13922,7 @@ export namespace Prisma {
     default_space_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
+    plan?: $Enums.Plan
     space_owned?: SpaceUncheckedCreateNestedManyWithoutOwnerInput
   }
 
@@ -13838,6 +13995,7 @@ export namespace Prisma {
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    plan?: EnumPlanFieldUpdateOperationsInput | $Enums.Plan
     space_owned?: SpaceUpdateManyWithoutOwnerNestedInput
   }
 
@@ -13861,6 +14019,7 @@ export namespace Prisma {
     default_space_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    plan?: EnumPlanFieldUpdateOperationsInput | $Enums.Plan
     space_owned?: SpaceUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
@@ -13928,12 +14087,14 @@ export namespace Prisma {
     subcategory_id?: string
     name: string
     description?: string | null
+    icon?: string | null
   }
 
   export type SubcategoryUncheckedCreateWithoutCategoryInput = {
     subcategory_id?: string
     name: string
     description?: string | null
+    icon?: string | null
   }
 
   export type SubcategoryCreateOrConnectWithoutCategoryInput = {
@@ -13970,6 +14131,7 @@ export namespace Prisma {
     category_id?: UuidFilter<"Subcategory"> | string
     name?: StringFilter<"Subcategory"> | string
     description?: StringNullableFilter<"Subcategory"> | string | null
+    icon?: StringNullableFilter<"Subcategory"> | string | null
   }
 
   export type CategoryCreateWithoutSubcategoriesInput = {
@@ -13977,6 +14139,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     type: $Enums.Transaction_type
+    icon?: string | null
   }
 
   export type CategoryUncheckedCreateWithoutSubcategoriesInput = {
@@ -13984,6 +14147,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     type: $Enums.Transaction_type
+    icon?: string | null
   }
 
   export type CategoryCreateOrConnectWithoutSubcategoriesInput = {
@@ -14007,6 +14171,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CategoryUncheckedUpdateWithoutSubcategoriesInput = {
@@ -14014,6 +14179,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SpaceCreateManyOwnerInput = {
@@ -14172,24 +14338,28 @@ export namespace Prisma {
     subcategory_id?: string
     name: string
     description?: string | null
+    icon?: string | null
   }
 
   export type SubcategoryUpdateWithoutCategoryInput = {
     subcategory_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SubcategoryUncheckedUpdateWithoutCategoryInput = {
     subcategory_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SubcategoryUncheckedUpdateManyWithoutCategoryInput = {
     subcategory_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

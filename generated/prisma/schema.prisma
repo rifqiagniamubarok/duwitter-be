@@ -14,6 +14,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Plan {
+  FREE
+  PRO
+}
+
 model User {
   user_id    String  @id @default(uuid(7)) @db.Uuid
   first_name String
@@ -38,6 +43,8 @@ model User {
 
   created_at DateTime  @default(now())
   updated_at DateTime? @updatedAt
+
+  plan Plan @default(FREE)
 
   space_owned Space[]
   spaces      SpaceMember[]
@@ -134,6 +141,7 @@ model Category {
   name        String
   description String?
   type        Transaction_type
+  icon        String?
 
   subcategories Subcategory[]
 
@@ -145,6 +153,7 @@ model Subcategory {
   category_id    String  @db.Uuid
   name           String
   description    String?
+  icon           String?
 
   category Category @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: Cascade)
 
