@@ -114,4 +114,32 @@ describe('Category testing', () => {
     expect(body.data.icon).toBe('updated-subcategory-icon');
     expect(body.data.subcategory_id).toBe(subcategory_id);
   });
+
+  test('PC: get all categories expense', async () => {
+    const { status, body } = await supertest(app).get(api_url).set('Authorization', `Bearer ${token}`).query({
+      type: 'EXPENSE',
+    });
+
+    expect(status).toBe(200);
+    expect(body.success).toBe(true);
+    expect(body.data.length).toBeGreaterThan(0);
+  });
+
+  test('PC: get all categories income', async () => {
+    const { status, body } = await supertest(app).get(api_url).set('Authorization', `Bearer ${token}`).query({
+      type: 'INCOME',
+    });
+
+    expect(status).toBe(200);
+    expect(body.success).toBe(true);
+    expect(body.data.length).toBeGreaterThan(0);
+  });
+
+  test('PC: get category by ID', async () => {
+    const { status, body } = await supertest(app).get(`${api_url}/${category_id}`).set('Authorization', `Bearer ${token}`);
+
+    expect(status).toBe(200);
+    expect(body.success).toBe(true);
+    expect(body.data.category_id).toBe(category_id);
+  });
 });

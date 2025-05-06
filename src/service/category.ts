@@ -115,7 +115,7 @@ export const edit_existing_subcategory = async (space_id: string, subcategory_id
   return result;
 };
 
-export const get_all_category = async (space_id: string, type: Transaction_type) => {
+export const get_all_category_service = async (space_id: string, type: Transaction_type) => {
   const data = await prisma.category.findMany({
     where: {
       space_id,
@@ -129,7 +129,7 @@ export const get_all_category = async (space_id: string, type: Transaction_type)
   return data;
 };
 
-export const get_detail_category = async (space_id: string, category_id: string) => {
+export const get_detail_category_service = async (space_id: string, category_id: string) => {
   const data = await prisma.category.findFirst({
     where: {
       space_id,

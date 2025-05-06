@@ -2,7 +2,7 @@ import express, { type Request, type Response } from 'express';
 import { auth_middleware } from '../middleware/auth_middleware';
 import { fullauth_middleware } from '../middleware/fullauth_middleware';
 import { account_example, create_account, edit_account, get_all_account, get_detail_account } from '../controller/account';
-import { create_category, edit_category, edit_subcategory } from '../controller/category';
+import { create_category, edit_category, edit_subcategory, get_all_category, get_detail_category } from '../controller/category';
 
 export const protected_router = express.Router();
 
@@ -32,3 +32,5 @@ router.post('/account', create_account);
 router.post('/category', create_category);
 router.put('/category/:category_id', edit_category);
 router.put('/category/subcategory/:subcategory_id', edit_subcategory);
+router.get('/category/:category_id', get_detail_category);
+router.get('/category', get_all_category);

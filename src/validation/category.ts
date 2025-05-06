@@ -29,3 +29,9 @@ export const edit_subcategory_request_validation = z.object({
   description: z.string().nullable().optional(),
   icon: z.string().nullable().optional(),
 });
+
+export const get_category_validation = z.object({
+  type: z.enum(['INCOME', 'EXPENSE'], {
+    errorMap: () => ({ message: 'Type is required' }),
+  }),
+});
