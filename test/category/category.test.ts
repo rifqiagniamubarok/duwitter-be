@@ -6,6 +6,7 @@ import { logger } from '../../src/app/logging';
 
 describe('Category testing', () => {
   const api_url = '/api/v1/category';
+
   let token = '';
   const payload: any = {
     name: 'Test Category',
@@ -25,6 +26,9 @@ describe('Category testing', () => {
       },
     ],
   };
+
+  let category_id = '';
+  let subcategory_id = '';
 
   beforeAll(async () => {
     await clear_token_auth_for_testing();
@@ -61,6 +65,9 @@ describe('Category testing', () => {
     expect(body.data.type).toBe('EXPENSE');
     expect(body.data.icon).toBe('test-icon');
     expect(body.data.subcategories.length).toBe(2);
+
+    category_id = body.data.category_id;
+    subcategory_id = body.data.subcategories[0].subcategory_id;
   });
 
   test('PC: create category with null optional request', async () => {
@@ -76,5 +83,35 @@ describe('Category testing', () => {
     expect(body.data.type).toBe('EXPENSE');
     expect(body.data.icon).toBe(null);
     expect(body.data.subcategories.length).toBe(2);
+  });
+
+  test('PC: edit category', async () => {
+    const { status, body } = await supertest(app).put(`${api_url}/${category_id}`).set('Authorization', `Bearer ${token}`).send({
+      name: 'Updated Category',
+      description: 'Updated Description',
+      icon: 'updated-icon',
+    });
+
+    expect(status).toBe(200);
+    expect(body.success).toBe(true);
+    expect(body.data.name).toBe('Updated Category');
+    expect(body.data.description).toBe('Updated Description');
+    expect(body.data.icon).toBe('updated-icon');
+    expect(body.data.category_id).toBe(category_id);
+  });
+
+  test('PC: edit subcategory', async () => {
+    const { status, body } = await supertest(app).put(`${api_url}/subcategory/${subcategory_id}`).set('Authorization', `Bearer ${token}`).send({
+      name: 'Updated Subcategory',
+      description: 'Updated Subcategory Description',
+      icon: 'updated-subcategory-icon',
+    });
+
+    expect(status).toBe(200);
+    expect(body.success).toBe(true);
+    expect(body.data.name).toBe('Updated Subcategory');
+    expect(body.data.description).toBe('Updated Subcategory Description');
+    expect(body.data.icon).toBe('updated-subcategory-icon');
+    expect(body.data.subcategory_id).toBe(subcategory_id);
   });
 });

@@ -16,11 +16,14 @@ interface CategoryRequest {
   subcategories: SubcategoryRequest[] | [];
 }
 
-interface CategoryOnlyRequest {
+interface CategoryOnlyRequest extends CategoryRawRequest {
+  type: Transaction_type;
+}
+
+interface CategoryRawRequest {
   name: string;
   description: string | null;
   icon: string | null;
-  type: Transaction_type;
 }
 
 export const create_new_category = async (space_id: string, request: CategoryRequest) => {
@@ -53,7 +56,7 @@ export const create_new_category = async (space_id: string, request: CategoryReq
   return result;
 };
 
-export const edit_existing_category = async (space_id: string, category_id: string, request: CategoryOnlyRequest) => {
+export const edit_existing_category = async (space_id: string, category_id: string, request: CategoryRawRequest) => {
   const result = await prisma.$transaction(async (tx) => {
     const checkCategory = await tx.category.count({
       where: {
@@ -72,13 +75,43 @@ export const edit_existing_category = async (space_id: string, category_id: stri
         name: request.name,
         description: request.description,
         icon: request.icon,
-        type: request.type,
       },
     });
 
     return data;
   });
 
+  return result;
+};
+
+export const edit_existing_subcategory = async (space_id: string, subcategory_id: string, request: SubcategoryRequest) => {
+  const result = await prisma.$transaction(async (tx) => {
+    const checkSubcategory = await tx.subcategory.count({
+      where: {
+        subcategory_id,
+        category: {
+          space_id,
+        },
+      },
+    });
+
+    if (checkSubcategory === 0) {
+      throw new Response_error(400, 'Subcategory not found');
+    }
+
+    const data = await prisma.subcategory.update({
+      where: {
+        subcategory_id,
+      },
+      data: {
+        name: request.name,
+        description: request.description,
+        icon: request.icon,
+      },
+    });
+
+    return data;
+  });
   return result;
 };
 

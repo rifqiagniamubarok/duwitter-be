@@ -17,3 +17,15 @@ export const create_category_request_validation = z.object({
     )
     .min(1, { message: 'Subcategory is required' }),
 });
+
+export const edit_category_request_validation = z.object({
+  name: z.string().min(1, { message: 'Name is required' }),
+  description: z.string().nullable().optional(),
+  icon: z.string().nullable().optional(),
+});
+
+export const edit_subcategory_request_validation = z.object({
+  name: z.string().min(1, { message: 'Name is required' }),
+  description: z.string().nullable().optional(),
+  icon: z.string().nullable().optional(),
+});
