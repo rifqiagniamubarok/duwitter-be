@@ -1,5 +1,6 @@
 import express from 'express';
 import { login, login_remember, register } from '../controller/user';
+import { create_category } from '../controller/category';
 
 export const public_router = express.Router();
 
@@ -13,3 +14,5 @@ router.get('/public-api-test', (req, res) => {
 router.post('/auth/register', register);
 router.post('/auth/login', login);
 router.post('/auth/login-remember', login_remember);
+
+// ############## ----- END AUTH ----- ##############

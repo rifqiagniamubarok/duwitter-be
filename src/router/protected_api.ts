@@ -2,6 +2,7 @@ import express, { type Request, type Response } from 'express';
 import { auth_middleware } from '../middleware/auth_middleware';
 import { fullauth_middleware } from '../middleware/fullauth_middleware';
 import { account_example, create_account, edit_account, get_all_account, get_detail_account } from '../controller/account';
+import { create_category } from '../controller/category';
 
 export const protected_router = express.Router();
 
@@ -26,3 +27,6 @@ router.get('/account', get_all_account);
 router.put('/account/:account_id', edit_account);
 router.get('/account/:account_id', get_detail_account);
 router.post('/account', create_account);
+// ############## ----- END Accounts ----- ##############
+// ############## ----- Category ----- ##############
+router.post('/category', create_category);

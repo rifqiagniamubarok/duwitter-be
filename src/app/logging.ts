@@ -32,7 +32,7 @@ export const logger = winston.createLogger({
       format: colorizeFormat,
     }),
     new DailyRotateFile({
-      filename: 'log_of_erros/%DATE%-results.log',
+      filename: 'logs/error/%DATE%-results.log',
       datePattern: 'YYYY-MM-DD',
       zippedArchive: true,
       level: 'error',

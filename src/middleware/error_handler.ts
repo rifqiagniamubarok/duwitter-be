@@ -19,7 +19,7 @@ const error_ticket = (status: number) => {
 };
 
 export const error_handler = async (error: Error, req: Request, res: Response, next: NextFunction): Promise<any> => {
-  !isTest && console.log('Error:', error);
+  // !isTest && console.log('Error:', error);
   if (error instanceof ZodError) {
     !isTest &&
       logger.error({
