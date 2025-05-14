@@ -141,5 +141,6 @@ describe('Category testing', () => {
     expect(status).toBe(200);
     expect(body.success).toBe(true);
     expect(body.data.category_id).toBe(category_id);
+    expect(body.data.subcategories).toBeArray();
   });
 });

@@ -1,12 +1,11 @@
 import express from 'express';
 import { login, login_remember, register } from '../controller/user';
-import { create_category } from '../controller/category';
 
 export const public_router = express.Router();
 
 const router = public_router;
 
-router.get('/public-api-test', (req, res) => {
+router.use('/public-api-test', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 

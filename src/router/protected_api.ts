@@ -11,9 +11,9 @@ const router = protected_router;
 router.use(auth_middleware);
 router.use(fullauth_middleware);
 
-router.get('/protected-api-test', async (req: Request, res: Response) => {
+router.use('/protected-api-test', async (req: Request, res: Response) => {
   res.status(200).json({
-    ok: true,
+    status: 'ok',
     user_id: req.user_id,
     space_id: req.space_id,
     is_profile_required: req.is_profile_required,
