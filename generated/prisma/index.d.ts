@@ -9845,7 +9845,7 @@ export namespace Prisma {
     subcategory_id: string | null
     amount: number
     currency: string | null
-    date: Date
+    date: Date | null
     created_at: Date
     updated_at: Date | null
     model: $Enums.Transaction_model
@@ -9953,7 +9953,7 @@ export namespace Prisma {
       subcategory_id: string | null
       amount: number
       currency: string | null
-      date: Date
+      date: Date | null
       created_at: Date
       updated_at: Date | null
       model: $Enums.Transaction_model
@@ -11662,7 +11662,7 @@ export namespace Prisma {
     subcategory_id?: UuidNullableFilter<"Transaction"> | string | null
     amount?: FloatFilter<"Transaction"> | number
     currency?: StringNullableFilter<"Transaction"> | string | null
-    date?: DateTimeFilter<"Transaction"> | Date | string
+    date?: DateTimeNullableFilter<"Transaction"> | Date | string | null
     created_at?: DateTimeFilter<"Transaction"> | Date | string
     updated_at?: DateTimeNullableFilter<"Transaction"> | Date | string | null
     model?: EnumTransaction_modelFilter<"Transaction"> | $Enums.Transaction_model
@@ -11677,7 +11677,7 @@ export namespace Prisma {
     subcategory_id?: SortOrderInput | SortOrder
     amount?: SortOrder
     currency?: SortOrderInput | SortOrder
-    date?: SortOrder
+    date?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
     model?: SortOrder
@@ -11695,7 +11695,7 @@ export namespace Prisma {
     subcategory_id?: UuidNullableFilter<"Transaction"> | string | null
     amount?: FloatFilter<"Transaction"> | number
     currency?: StringNullableFilter<"Transaction"> | string | null
-    date?: DateTimeFilter<"Transaction"> | Date | string
+    date?: DateTimeNullableFilter<"Transaction"> | Date | string | null
     created_at?: DateTimeFilter<"Transaction"> | Date | string
     updated_at?: DateTimeNullableFilter<"Transaction"> | Date | string | null
     model?: EnumTransaction_modelFilter<"Transaction"> | $Enums.Transaction_model
@@ -11710,7 +11710,7 @@ export namespace Prisma {
     subcategory_id?: SortOrderInput | SortOrder
     amount?: SortOrder
     currency?: SortOrderInput | SortOrder
-    date?: SortOrder
+    date?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
     model?: SortOrder
@@ -11732,7 +11732,7 @@ export namespace Prisma {
     subcategory_id?: UuidNullableWithAggregatesFilter<"Transaction"> | string | null
     amount?: FloatWithAggregatesFilter<"Transaction"> | number
     currency?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
-    date?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
+    date?: DateTimeNullableWithAggregatesFilter<"Transaction"> | Date | string | null
     created_at?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
     updated_at?: DateTimeNullableWithAggregatesFilter<"Transaction"> | Date | string | null
     model?: EnumTransaction_modelWithAggregatesFilter<"Transaction"> | $Enums.Transaction_model
@@ -12348,7 +12348,7 @@ export namespace Prisma {
     note?: string | null
     amount?: number
     currency?: string | null
-    date?: Date | string
+    date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
@@ -12363,7 +12363,7 @@ export namespace Prisma {
     subcategory_id?: string | null
     amount?: number
     currency?: string | null
-    date?: Date | string
+    date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
@@ -12376,7 +12376,7 @@ export namespace Prisma {
     note?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
     currency?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
@@ -12391,7 +12391,7 @@ export namespace Prisma {
     subcategory_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
     currency?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
@@ -12405,7 +12405,7 @@ export namespace Prisma {
     subcategory_id?: string | null
     amount?: number
     currency?: string | null
-    date?: Date | string
+    date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
@@ -12418,7 +12418,7 @@ export namespace Prisma {
     note?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
     currency?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
@@ -12432,7 +12432,7 @@ export namespace Prisma {
     subcategory_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
     currency?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
@@ -14680,7 +14680,7 @@ export namespace Prisma {
     note?: string | null
     amount?: number
     currency?: string | null
-    date?: Date | string
+    date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
@@ -14693,7 +14693,7 @@ export namespace Prisma {
     note?: string | null
     amount?: number
     currency?: string | null
-    date?: Date | string
+    date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
@@ -14765,7 +14765,7 @@ export namespace Prisma {
     subcategory_id?: UuidNullableFilter<"Transaction"> | string | null
     amount?: FloatFilter<"Transaction"> | number
     currency?: StringNullableFilter<"Transaction"> | string | null
-    date?: DateTimeFilter<"Transaction"> | Date | string
+    date?: DateTimeNullableFilter<"Transaction"> | Date | string | null
     created_at?: DateTimeFilter<"Transaction"> | Date | string
     updated_at?: DateTimeNullableFilter<"Transaction"> | Date | string | null
     model?: EnumTransaction_modelFilter<"Transaction"> | $Enums.Transaction_model
@@ -15044,7 +15044,7 @@ export namespace Prisma {
     note?: string | null
     amount?: number
     currency?: string | null
-    date?: Date | string
+    date?: Date | string | null
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
@@ -15057,7 +15057,7 @@ export namespace Prisma {
     note?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
     currency?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
@@ -15070,7 +15070,7 @@ export namespace Prisma {
     note?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
     currency?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
@@ -15083,7 +15083,7 @@ export namespace Prisma {
     note?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
     currency?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model

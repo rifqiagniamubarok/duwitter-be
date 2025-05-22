@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "transactions" ALTER COLUMN "date" DROP NOT NULL,
+ALTER COLUMN "date" SET DATA TYPE DATE;
