@@ -9668,7 +9668,6 @@ export namespace Prisma {
     created_at: Date | null
     updated_at: Date | null
     model: $Enums.Transaction_model | null
-    type: $Enums.Transaction_type | null
   }
 
   export type TransactionMaxAggregateOutputType = {
@@ -9683,7 +9682,6 @@ export namespace Prisma {
     created_at: Date | null
     updated_at: Date | null
     model: $Enums.Transaction_model | null
-    type: $Enums.Transaction_type | null
   }
 
   export type TransactionCountAggregateOutputType = {
@@ -9698,7 +9696,6 @@ export namespace Prisma {
     created_at: number
     updated_at: number
     model: number
-    type: number
     _all: number
   }
 
@@ -9723,7 +9720,6 @@ export namespace Prisma {
     created_at?: true
     updated_at?: true
     model?: true
-    type?: true
   }
 
   export type TransactionMaxAggregateInputType = {
@@ -9738,7 +9734,6 @@ export namespace Prisma {
     created_at?: true
     updated_at?: true
     model?: true
-    type?: true
   }
 
   export type TransactionCountAggregateInputType = {
@@ -9753,7 +9748,6 @@ export namespace Prisma {
     created_at?: true
     updated_at?: true
     model?: true
-    type?: true
     _all?: true
   }
 
@@ -9855,7 +9849,6 @@ export namespace Prisma {
     created_at: Date
     updated_at: Date | null
     model: $Enums.Transaction_model
-    type: $Enums.Transaction_type
     _count: TransactionCountAggregateOutputType | null
     _avg: TransactionAvgAggregateOutputType | null
     _sum: TransactionSumAggregateOutputType | null
@@ -9889,7 +9882,6 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     model?: boolean
-    type?: boolean
     subcategory?: boolean | Transaction$subcategoryArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
@@ -9905,7 +9897,6 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     model?: boolean
-    type?: boolean
     subcategory?: boolean | Transaction$subcategoryArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
@@ -9921,7 +9912,6 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     model?: boolean
-    type?: boolean
     subcategory?: boolean | Transaction$subcategoryArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
@@ -9937,10 +9927,9 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     model?: boolean
-    type?: boolean
   }
 
-  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"transaction_id" | "account_id" | "title" | "note" | "subcategory_id" | "amount" | "currency" | "date" | "created_at" | "updated_at" | "model" | "type", ExtArgs["result"]["transaction"]>
+  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"transaction_id" | "account_id" | "title" | "note" | "subcategory_id" | "amount" | "currency" | "date" | "created_at" | "updated_at" | "model", ExtArgs["result"]["transaction"]>
   export type TransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     subcategory?: boolean | Transaction$subcategoryArgs<ExtArgs>
   }
@@ -9968,7 +9957,6 @@ export namespace Prisma {
       created_at: Date
       updated_at: Date | null
       model: $Enums.Transaction_model
-      type: $Enums.Transaction_type
     }, ExtArgs["result"]["transaction"]>
     composites: {}
   }
@@ -10404,7 +10392,6 @@ export namespace Prisma {
     readonly created_at: FieldRef<"Transaction", 'DateTime'>
     readonly updated_at: FieldRef<"Transaction", 'DateTime'>
     readonly model: FieldRef<"Transaction", 'Transaction_model'>
-    readonly type: FieldRef<"Transaction", 'Transaction_type'>
   }
     
 
@@ -10967,8 +10954,7 @@ export namespace Prisma {
     date: 'date',
     created_at: 'created_at',
     updated_at: 'updated_at',
-    model: 'model',
-    type: 'type'
+    model: 'model'
   };
 
   export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
@@ -11680,7 +11666,6 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Transaction"> | Date | string
     updated_at?: DateTimeNullableFilter<"Transaction"> | Date | string | null
     model?: EnumTransaction_modelFilter<"Transaction"> | $Enums.Transaction_model
-    type?: EnumTransaction_typeFilter<"Transaction"> | $Enums.Transaction_type
     subcategory?: XOR<SubcategoryNullableScalarRelationFilter, SubcategoryWhereInput> | null
   }
 
@@ -11696,7 +11681,6 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
     model?: SortOrder
-    type?: SortOrder
     subcategory?: SubcategoryOrderByWithRelationInput
   }
 
@@ -11715,7 +11699,6 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Transaction"> | Date | string
     updated_at?: DateTimeNullableFilter<"Transaction"> | Date | string | null
     model?: EnumTransaction_modelFilter<"Transaction"> | $Enums.Transaction_model
-    type?: EnumTransaction_typeFilter<"Transaction"> | $Enums.Transaction_type
     subcategory?: XOR<SubcategoryNullableScalarRelationFilter, SubcategoryWhereInput> | null
   }, "transaction_id">
 
@@ -11731,7 +11714,6 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
     model?: SortOrder
-    type?: SortOrder
     _count?: TransactionCountOrderByAggregateInput
     _avg?: TransactionAvgOrderByAggregateInput
     _max?: TransactionMaxOrderByAggregateInput
@@ -11754,7 +11736,6 @@ export namespace Prisma {
     created_at?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
     updated_at?: DateTimeNullableWithAggregatesFilter<"Transaction"> | Date | string | null
     model?: EnumTransaction_modelWithAggregatesFilter<"Transaction"> | $Enums.Transaction_model
-    type?: EnumTransaction_typeWithAggregatesFilter<"Transaction"> | $Enums.Transaction_type
   }
 
   export type UserCreateInput = {
@@ -12371,7 +12352,6 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
-    type: $Enums.Transaction_type
     subcategory?: SubcategoryCreateNestedOneWithoutTransactionsInput
   }
 
@@ -12387,7 +12367,6 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
-    type: $Enums.Transaction_type
   }
 
   export type TransactionUpdateInput = {
@@ -12401,7 +12380,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
-    type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
     subcategory?: SubcategoryUpdateOneWithoutTransactionsNestedInput
   }
 
@@ -12417,7 +12395,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
-    type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
   }
 
   export type TransactionCreateManyInput = {
@@ -12432,7 +12409,6 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
-    type: $Enums.Transaction_type
   }
 
   export type TransactionUpdateManyMutationInput = {
@@ -12446,7 +12422,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
-    type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
   }
 
   export type TransactionUncheckedUpdateManyInput = {
@@ -12461,7 +12436,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
-    type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
   }
 
   export type UuidFilter<$PrismaModel = never> = {
@@ -13097,7 +13071,6 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     model?: SortOrder
-    type?: SortOrder
   }
 
   export type TransactionAvgOrderByAggregateInput = {
@@ -13116,7 +13089,6 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     model?: SortOrder
-    type?: SortOrder
   }
 
   export type TransactionMinOrderByAggregateInput = {
@@ -13131,7 +13103,6 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     model?: SortOrder
-    type?: SortOrder
   }
 
   export type TransactionSumOrderByAggregateInput = {
@@ -14713,7 +14684,6 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
-    type: $Enums.Transaction_type
   }
 
   export type TransactionUncheckedCreateWithoutSubcategoryInput = {
@@ -14727,7 +14697,6 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
-    type: $Enums.Transaction_type
   }
 
   export type TransactionCreateOrConnectWithoutSubcategoryInput = {
@@ -14800,7 +14769,6 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Transaction"> | Date | string
     updated_at?: DateTimeNullableFilter<"Transaction"> | Date | string | null
     model?: EnumTransaction_modelFilter<"Transaction"> | $Enums.Transaction_model
-    type?: EnumTransaction_typeFilter<"Transaction"> | $Enums.Transaction_type
   }
 
   export type SubcategoryCreateWithoutTransactionsInput = {
@@ -15080,7 +15048,6 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
-    type: $Enums.Transaction_type
   }
 
   export type TransactionUpdateWithoutSubcategoryInput = {
@@ -15094,7 +15061,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
-    type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
   }
 
   export type TransactionUncheckedUpdateWithoutSubcategoryInput = {
@@ -15108,7 +15074,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
-    type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
   }
 
   export type TransactionUncheckedUpdateManyWithoutSubcategoryInput = {
@@ -15122,7 +15087,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
-    type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
   }
 
 

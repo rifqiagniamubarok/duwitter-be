@@ -211,8 +211,7 @@ exports.Prisma.TransactionScalarFieldEnum = {
   date: 'date',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  model: 'model',
-  type: 'type'
+  model: 'model'
 };
 
 exports.Prisma.SortOrder = {

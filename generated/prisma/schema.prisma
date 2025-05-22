@@ -177,7 +177,6 @@ model Transaction {
   updated_at     DateTime? @updatedAt
 
   model       Transaction_model @default(TRANSACTION)
-  type        Transaction_type
   subcategory Subcategory?      @relation(fields: [subcategory_id], references: [subcategory_id], onDelete: Cascade, onUpdate: Cascade)
 
   @@map("transactions")
