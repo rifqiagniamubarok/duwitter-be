@@ -11,7 +11,7 @@ const reset_db = async (email: string) => {
   });
 };
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 describe('auth test', () => {
   const api_url = '/api/v1/auth';
