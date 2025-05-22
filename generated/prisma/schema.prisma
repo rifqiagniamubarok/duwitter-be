@@ -158,7 +158,8 @@ model Subcategory {
   description    String?
   icon           String?
 
-  category Category @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: Cascade)
+  category     Category      @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: Cascade)
+  transactions Transaction[]
 
   @@map("subcategories")
 }
@@ -168,14 +169,16 @@ model Transaction {
   account_id     String    @db.Uuid
   title          String
   note           String?
-  category_id    String?   @db.Uuid
+  subcategory_id String?   @db.Uuid
   amount         Float     @default(0)
+  currency       String?   @default("IDR")
   date           DateTime  @default(now())
   created_at     DateTime  @default(now())
   updated_at     DateTime? @updatedAt
 
-  model Transaction_model @default(TRANSACTION)
-  type  Transaction_type
+  model       Transaction_model @default(TRANSACTION)
+  type        Transaction_type
+  subcategory Subcategory?      @relation(fields: [subcategory_id], references: [subcategory_id], onDelete: Cascade, onUpdate: Cascade)
 
   @@map("transactions")
 }

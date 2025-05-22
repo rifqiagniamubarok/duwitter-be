@@ -1680,6 +1680,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type SubcategoryCountOutputType
+   */
+
+  export type SubcategoryCountOutputType = {
+    transactions: number
+  }
+
+  export type SubcategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transactions?: boolean | SubcategoryCountOutputTypeCountTransactionsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SubcategoryCountOutputType without action
+   */
+  export type SubcategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubcategoryCountOutputType
+     */
+    select?: SubcategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SubcategoryCountOutputType without action
+   */
+  export type SubcategoryCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransactionWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -8682,6 +8713,8 @@ export namespace Prisma {
     description?: boolean
     icon?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+    transactions?: boolean | Subcategory$transactionsArgs<ExtArgs>
+    _count?: boolean | SubcategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subcategory"]>
 
   export type SubcategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8713,6 +8746,8 @@ export namespace Prisma {
   export type SubcategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"subcategory_id" | "category_id" | "name" | "description" | "icon", ExtArgs["result"]["subcategory"]>
   export type SubcategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+    transactions?: boolean | Subcategory$transactionsArgs<ExtArgs>
+    _count?: boolean | SubcategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SubcategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
@@ -8725,6 +8760,7 @@ export namespace Prisma {
     name: "Subcategory"
     objects: {
       category: Prisma.$CategoryPayload<ExtArgs>
+      transactions: Prisma.$TransactionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       subcategory_id: string
@@ -9127,6 +9163,7 @@ export namespace Prisma {
   export interface Prisma__SubcategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    transactions<T extends Subcategory$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Subcategory$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9557,6 +9594,30 @@ export namespace Prisma {
   }
 
   /**
+   * Subcategory.transactions
+   */
+  export type Subcategory$transactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transaction
+     */
+    select?: TransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transaction
+     */
+    omit?: TransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
+    where?: TransactionWhereInput
+    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
+    cursor?: TransactionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
+  }
+
+  /**
    * Subcategory without action
    */
   export type SubcategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9600,8 +9661,9 @@ export namespace Prisma {
     account_id: string | null
     title: string | null
     note: string | null
-    category_id: string | null
+    subcategory_id: string | null
     amount: number | null
+    currency: string | null
     date: Date | null
     created_at: Date | null
     updated_at: Date | null
@@ -9614,8 +9676,9 @@ export namespace Prisma {
     account_id: string | null
     title: string | null
     note: string | null
-    category_id: string | null
+    subcategory_id: string | null
     amount: number | null
+    currency: string | null
     date: Date | null
     created_at: Date | null
     updated_at: Date | null
@@ -9628,8 +9691,9 @@ export namespace Prisma {
     account_id: number
     title: number
     note: number
-    category_id: number
+    subcategory_id: number
     amount: number
+    currency: number
     date: number
     created_at: number
     updated_at: number
@@ -9652,8 +9716,9 @@ export namespace Prisma {
     account_id?: true
     title?: true
     note?: true
-    category_id?: true
+    subcategory_id?: true
     amount?: true
+    currency?: true
     date?: true
     created_at?: true
     updated_at?: true
@@ -9666,8 +9731,9 @@ export namespace Prisma {
     account_id?: true
     title?: true
     note?: true
-    category_id?: true
+    subcategory_id?: true
     amount?: true
+    currency?: true
     date?: true
     created_at?: true
     updated_at?: true
@@ -9680,8 +9746,9 @@ export namespace Prisma {
     account_id?: true
     title?: true
     note?: true
-    category_id?: true
+    subcategory_id?: true
     amount?: true
+    currency?: true
     date?: true
     created_at?: true
     updated_at?: true
@@ -9781,8 +9848,9 @@ export namespace Prisma {
     account_id: string
     title: string
     note: string | null
-    category_id: string | null
+    subcategory_id: string | null
     amount: number
+    currency: string | null
     date: Date
     created_at: Date
     updated_at: Date | null
@@ -9814,13 +9882,15 @@ export namespace Prisma {
     account_id?: boolean
     title?: boolean
     note?: boolean
-    category_id?: boolean
+    subcategory_id?: boolean
     amount?: boolean
+    currency?: boolean
     date?: boolean
     created_at?: boolean
     updated_at?: boolean
     model?: boolean
     type?: boolean
+    subcategory?: boolean | Transaction$subcategoryArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
   export type TransactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -9828,13 +9898,15 @@ export namespace Prisma {
     account_id?: boolean
     title?: boolean
     note?: boolean
-    category_id?: boolean
+    subcategory_id?: boolean
     amount?: boolean
+    currency?: boolean
     date?: boolean
     created_at?: boolean
     updated_at?: boolean
     model?: boolean
     type?: boolean
+    subcategory?: boolean | Transaction$subcategoryArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
   export type TransactionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -9842,13 +9914,15 @@ export namespace Prisma {
     account_id?: boolean
     title?: boolean
     note?: boolean
-    category_id?: boolean
+    subcategory_id?: boolean
     amount?: boolean
+    currency?: boolean
     date?: boolean
     created_at?: boolean
     updated_at?: boolean
     model?: boolean
     type?: boolean
+    subcategory?: boolean | Transaction$subcategoryArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
   export type TransactionSelectScalar = {
@@ -9856,8 +9930,9 @@ export namespace Prisma {
     account_id?: boolean
     title?: boolean
     note?: boolean
-    category_id?: boolean
+    subcategory_id?: boolean
     amount?: boolean
+    currency?: boolean
     date?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -9865,18 +9940,30 @@ export namespace Prisma {
     type?: boolean
   }
 
-  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"transaction_id" | "account_id" | "title" | "note" | "category_id" | "amount" | "date" | "created_at" | "updated_at" | "model" | "type", ExtArgs["result"]["transaction"]>
+  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"transaction_id" | "account_id" | "title" | "note" | "subcategory_id" | "amount" | "currency" | "date" | "created_at" | "updated_at" | "model" | "type", ExtArgs["result"]["transaction"]>
+  export type TransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subcategory?: boolean | Transaction$subcategoryArgs<ExtArgs>
+  }
+  export type TransactionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subcategory?: boolean | Transaction$subcategoryArgs<ExtArgs>
+  }
+  export type TransactionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subcategory?: boolean | Transaction$subcategoryArgs<ExtArgs>
+  }
 
   export type $TransactionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Transaction"
-    objects: {}
+    objects: {
+      subcategory: Prisma.$SubcategoryPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       transaction_id: string
       account_id: string
       title: string
       note: string | null
-      category_id: string | null
+      subcategory_id: string | null
       amount: number
+      currency: string | null
       date: Date
       created_at: Date
       updated_at: Date | null
@@ -10276,6 +10363,7 @@ export namespace Prisma {
    */
   export interface Prisma__TransactionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    subcategory<T extends Transaction$subcategoryArgs<ExtArgs> = {}>(args?: Subset<T, Transaction$subcategoryArgs<ExtArgs>>): Prisma__SubcategoryClient<$Result.GetResult<Prisma.$SubcategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10309,8 +10397,9 @@ export namespace Prisma {
     readonly account_id: FieldRef<"Transaction", 'String'>
     readonly title: FieldRef<"Transaction", 'String'>
     readonly note: FieldRef<"Transaction", 'String'>
-    readonly category_id: FieldRef<"Transaction", 'String'>
+    readonly subcategory_id: FieldRef<"Transaction", 'String'>
     readonly amount: FieldRef<"Transaction", 'Float'>
+    readonly currency: FieldRef<"Transaction", 'String'>
     readonly date: FieldRef<"Transaction", 'DateTime'>
     readonly created_at: FieldRef<"Transaction", 'DateTime'>
     readonly updated_at: FieldRef<"Transaction", 'DateTime'>
@@ -10333,6 +10422,10 @@ export namespace Prisma {
      */
     omit?: TransactionOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
+    /**
      * Filter, which Transaction to fetch.
      */
     where: TransactionWhereUniqueInput
@@ -10351,6 +10444,10 @@ export namespace Prisma {
      */
     omit?: TransactionOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
+    /**
      * Filter, which Transaction to fetch.
      */
     where: TransactionWhereUniqueInput
@@ -10368,6 +10465,10 @@ export namespace Prisma {
      * Omit specific fields from the Transaction
      */
     omit?: TransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
     /**
      * Filter, which Transaction to fetch.
      */
@@ -10417,6 +10518,10 @@ export namespace Prisma {
      */
     omit?: TransactionOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
+    /**
      * Filter, which Transaction to fetch.
      */
     where?: TransactionWhereInput
@@ -10465,6 +10570,10 @@ export namespace Prisma {
      */
     omit?: TransactionOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
+    /**
      * Filter, which Transactions to fetch.
      */
     where?: TransactionWhereInput
@@ -10508,6 +10617,10 @@ export namespace Prisma {
      */
     omit?: TransactionOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
+    /**
      * The data needed to create a Transaction.
      */
     data: XOR<TransactionCreateInput, TransactionUncheckedCreateInput>
@@ -10541,6 +10654,10 @@ export namespace Prisma {
      */
     data: TransactionCreateManyInput | TransactionCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -10555,6 +10672,10 @@ export namespace Prisma {
      * Omit specific fields from the Transaction
      */
     omit?: TransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
     /**
      * The data needed to update a Transaction.
      */
@@ -10607,6 +10728,10 @@ export namespace Prisma {
      * Limit how many Transactions to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -10621,6 +10746,10 @@ export namespace Prisma {
      * Omit specific fields from the Transaction
      */
     omit?: TransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
     /**
      * The filter to search for the Transaction to update in case it exists.
      */
@@ -10648,6 +10777,10 @@ export namespace Prisma {
      */
     omit?: TransactionOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
+    /**
      * Filter which Transaction to delete.
      */
     where: TransactionWhereUniqueInput
@@ -10668,6 +10801,25 @@ export namespace Prisma {
   }
 
   /**
+   * Transaction.subcategory
+   */
+  export type Transaction$subcategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subcategory
+     */
+    select?: SubcategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subcategory
+     */
+    omit?: SubcategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubcategoryInclude<ExtArgs> | null
+    where?: SubcategoryWhereInput
+  }
+
+  /**
    * Transaction without action
    */
   export type TransactionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10679,6 +10831,10 @@ export namespace Prisma {
      * Omit specific fields from the Transaction
      */
     omit?: TransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
   }
 
 
@@ -10805,8 +10961,9 @@ export namespace Prisma {
     account_id: 'account_id',
     title: 'title',
     note: 'note',
-    category_id: 'category_id',
+    subcategory_id: 'subcategory_id',
     amount: 'amount',
+    currency: 'currency',
     date: 'date',
     created_at: 'created_at',
     updated_at: 'updated_at',
@@ -11460,6 +11617,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Subcategory"> | string | null
     icon?: StringNullableFilter<"Subcategory"> | string | null
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    transactions?: TransactionListRelationFilter
   }
 
   export type SubcategoryOrderByWithRelationInput = {
@@ -11469,6 +11627,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     icon?: SortOrderInput | SortOrder
     category?: CategoryOrderByWithRelationInput
+    transactions?: TransactionOrderByRelationAggregateInput
   }
 
   export type SubcategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -11481,6 +11640,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Subcategory"> | string | null
     icon?: StringNullableFilter<"Subcategory"> | string | null
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    transactions?: TransactionListRelationFilter
   }, "subcategory_id">
 
   export type SubcategoryOrderByWithAggregationInput = {
@@ -11513,13 +11673,15 @@ export namespace Prisma {
     account_id?: UuidFilter<"Transaction"> | string
     title?: StringFilter<"Transaction"> | string
     note?: StringNullableFilter<"Transaction"> | string | null
-    category_id?: UuidNullableFilter<"Transaction"> | string | null
+    subcategory_id?: UuidNullableFilter<"Transaction"> | string | null
     amount?: FloatFilter<"Transaction"> | number
+    currency?: StringNullableFilter<"Transaction"> | string | null
     date?: DateTimeFilter<"Transaction"> | Date | string
     created_at?: DateTimeFilter<"Transaction"> | Date | string
     updated_at?: DateTimeNullableFilter<"Transaction"> | Date | string | null
     model?: EnumTransaction_modelFilter<"Transaction"> | $Enums.Transaction_model
     type?: EnumTransaction_typeFilter<"Transaction"> | $Enums.Transaction_type
+    subcategory?: XOR<SubcategoryNullableScalarRelationFilter, SubcategoryWhereInput> | null
   }
 
   export type TransactionOrderByWithRelationInput = {
@@ -11527,13 +11689,15 @@ export namespace Prisma {
     account_id?: SortOrder
     title?: SortOrder
     note?: SortOrderInput | SortOrder
-    category_id?: SortOrderInput | SortOrder
+    subcategory_id?: SortOrderInput | SortOrder
     amount?: SortOrder
+    currency?: SortOrderInput | SortOrder
     date?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
     model?: SortOrder
     type?: SortOrder
+    subcategory?: SubcategoryOrderByWithRelationInput
   }
 
   export type TransactionWhereUniqueInput = Prisma.AtLeast<{
@@ -11544,13 +11708,15 @@ export namespace Prisma {
     account_id?: UuidFilter<"Transaction"> | string
     title?: StringFilter<"Transaction"> | string
     note?: StringNullableFilter<"Transaction"> | string | null
-    category_id?: UuidNullableFilter<"Transaction"> | string | null
+    subcategory_id?: UuidNullableFilter<"Transaction"> | string | null
     amount?: FloatFilter<"Transaction"> | number
+    currency?: StringNullableFilter<"Transaction"> | string | null
     date?: DateTimeFilter<"Transaction"> | Date | string
     created_at?: DateTimeFilter<"Transaction"> | Date | string
     updated_at?: DateTimeNullableFilter<"Transaction"> | Date | string | null
     model?: EnumTransaction_modelFilter<"Transaction"> | $Enums.Transaction_model
     type?: EnumTransaction_typeFilter<"Transaction"> | $Enums.Transaction_type
+    subcategory?: XOR<SubcategoryNullableScalarRelationFilter, SubcategoryWhereInput> | null
   }, "transaction_id">
 
   export type TransactionOrderByWithAggregationInput = {
@@ -11558,8 +11724,9 @@ export namespace Prisma {
     account_id?: SortOrder
     title?: SortOrder
     note?: SortOrderInput | SortOrder
-    category_id?: SortOrderInput | SortOrder
+    subcategory_id?: SortOrderInput | SortOrder
     amount?: SortOrder
+    currency?: SortOrderInput | SortOrder
     date?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
@@ -11580,8 +11747,9 @@ export namespace Prisma {
     account_id?: UuidWithAggregatesFilter<"Transaction"> | string
     title?: StringWithAggregatesFilter<"Transaction"> | string
     note?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
-    category_id?: UuidNullableWithAggregatesFilter<"Transaction"> | string | null
+    subcategory_id?: UuidNullableWithAggregatesFilter<"Transaction"> | string | null
     amount?: FloatWithAggregatesFilter<"Transaction"> | number
+    currency?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
     date?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
     created_at?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
     updated_at?: DateTimeNullableWithAggregatesFilter<"Transaction"> | Date | string | null
@@ -12139,6 +12307,7 @@ export namespace Prisma {
     description?: string | null
     icon?: string | null
     category: CategoryCreateNestedOneWithoutSubcategoriesInput
+    transactions?: TransactionCreateNestedManyWithoutSubcategoryInput
   }
 
   export type SubcategoryUncheckedCreateInput = {
@@ -12147,6 +12316,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     icon?: string | null
+    transactions?: TransactionUncheckedCreateNestedManyWithoutSubcategoryInput
   }
 
   export type SubcategoryUpdateInput = {
@@ -12155,6 +12325,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     icon?: NullableStringFieldUpdateOperationsInput | string | null
     category?: CategoryUpdateOneRequiredWithoutSubcategoriesNestedInput
+    transactions?: TransactionUpdateManyWithoutSubcategoryNestedInput
   }
 
   export type SubcategoryUncheckedUpdateInput = {
@@ -12163,6 +12334,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     icon?: NullableStringFieldUpdateOperationsInput | string | null
+    transactions?: TransactionUncheckedUpdateManyWithoutSubcategoryNestedInput
   }
 
   export type SubcategoryCreateManyInput = {
@@ -12193,13 +12365,14 @@ export namespace Prisma {
     account_id: string
     title: string
     note?: string | null
-    category_id?: string | null
     amount?: number
+    currency?: string | null
     date?: Date | string
     created_at?: Date | string
     updated_at?: Date | string | null
     model?: $Enums.Transaction_model
     type: $Enums.Transaction_type
+    subcategory?: SubcategoryCreateNestedOneWithoutTransactionsInput
   }
 
   export type TransactionUncheckedCreateInput = {
@@ -12207,8 +12380,9 @@ export namespace Prisma {
     account_id: string
     title: string
     note?: string | null
-    category_id?: string | null
+    subcategory_id?: string | null
     amount?: number
+    currency?: string | null
     date?: Date | string
     created_at?: Date | string
     updated_at?: Date | string | null
@@ -12221,13 +12395,14 @@ export namespace Prisma {
     account_id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     note?: NullableStringFieldUpdateOperationsInput | string | null
-    category_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
     type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
+    subcategory?: SubcategoryUpdateOneWithoutTransactionsNestedInput
   }
 
   export type TransactionUncheckedUpdateInput = {
@@ -12235,8 +12410,9 @@ export namespace Prisma {
     account_id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     note?: NullableStringFieldUpdateOperationsInput | string | null
-    category_id?: NullableStringFieldUpdateOperationsInput | string | null
+    subcategory_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12249,8 +12425,9 @@ export namespace Prisma {
     account_id: string
     title: string
     note?: string | null
-    category_id?: string | null
+    subcategory_id?: string | null
     amount?: number
+    currency?: string | null
     date?: Date | string
     created_at?: Date | string
     updated_at?: Date | string | null
@@ -12263,8 +12440,8 @@ export namespace Prisma {
     account_id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     note?: NullableStringFieldUpdateOperationsInput | string | null
-    category_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12277,8 +12454,9 @@ export namespace Prisma {
     account_id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     note?: NullableStringFieldUpdateOperationsInput | string | null
-    category_id?: NullableStringFieldUpdateOperationsInput | string | null
+    subcategory_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12850,6 +13028,16 @@ export namespace Prisma {
     isNot?: CategoryWhereInput
   }
 
+  export type TransactionListRelationFilter = {
+    every?: TransactionWhereInput
+    some?: TransactionWhereInput
+    none?: TransactionWhereInput
+  }
+
+  export type TransactionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type SubcategoryCountOrderByAggregateInput = {
     subcategory_id?: SortOrder
     category_id?: SortOrder
@@ -12892,13 +13080,19 @@ export namespace Prisma {
     not?: NestedEnumTransaction_modelFilter<$PrismaModel> | $Enums.Transaction_model
   }
 
+  export type SubcategoryNullableScalarRelationFilter = {
+    is?: SubcategoryWhereInput | null
+    isNot?: SubcategoryWhereInput | null
+  }
+
   export type TransactionCountOrderByAggregateInput = {
     transaction_id?: SortOrder
     account_id?: SortOrder
     title?: SortOrder
     note?: SortOrder
-    category_id?: SortOrder
+    subcategory_id?: SortOrder
     amount?: SortOrder
+    currency?: SortOrder
     date?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -12915,8 +13109,9 @@ export namespace Prisma {
     account_id?: SortOrder
     title?: SortOrder
     note?: SortOrder
-    category_id?: SortOrder
+    subcategory_id?: SortOrder
     amount?: SortOrder
+    currency?: SortOrder
     date?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -12929,8 +13124,9 @@ export namespace Prisma {
     account_id?: SortOrder
     title?: SortOrder
     note?: SortOrder
-    category_id?: SortOrder
+    subcategory_id?: SortOrder
     amount?: SortOrder
+    currency?: SortOrder
     date?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -13336,12 +13532,60 @@ export namespace Prisma {
     connect?: CategoryWhereUniqueInput
   }
 
+  export type TransactionCreateNestedManyWithoutSubcategoryInput = {
+    create?: XOR<TransactionCreateWithoutSubcategoryInput, TransactionUncheckedCreateWithoutSubcategoryInput> | TransactionCreateWithoutSubcategoryInput[] | TransactionUncheckedCreateWithoutSubcategoryInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutSubcategoryInput | TransactionCreateOrConnectWithoutSubcategoryInput[]
+    createMany?: TransactionCreateManySubcategoryInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+  }
+
+  export type TransactionUncheckedCreateNestedManyWithoutSubcategoryInput = {
+    create?: XOR<TransactionCreateWithoutSubcategoryInput, TransactionUncheckedCreateWithoutSubcategoryInput> | TransactionCreateWithoutSubcategoryInput[] | TransactionUncheckedCreateWithoutSubcategoryInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutSubcategoryInput | TransactionCreateOrConnectWithoutSubcategoryInput[]
+    createMany?: TransactionCreateManySubcategoryInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+  }
+
   export type CategoryUpdateOneRequiredWithoutSubcategoriesNestedInput = {
     create?: XOR<CategoryCreateWithoutSubcategoriesInput, CategoryUncheckedCreateWithoutSubcategoriesInput>
     connectOrCreate?: CategoryCreateOrConnectWithoutSubcategoriesInput
     upsert?: CategoryUpsertWithoutSubcategoriesInput
     connect?: CategoryWhereUniqueInput
     update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutSubcategoriesInput, CategoryUpdateWithoutSubcategoriesInput>, CategoryUncheckedUpdateWithoutSubcategoriesInput>
+  }
+
+  export type TransactionUpdateManyWithoutSubcategoryNestedInput = {
+    create?: XOR<TransactionCreateWithoutSubcategoryInput, TransactionUncheckedCreateWithoutSubcategoryInput> | TransactionCreateWithoutSubcategoryInput[] | TransactionUncheckedCreateWithoutSubcategoryInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutSubcategoryInput | TransactionCreateOrConnectWithoutSubcategoryInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutSubcategoryInput | TransactionUpsertWithWhereUniqueWithoutSubcategoryInput[]
+    createMany?: TransactionCreateManySubcategoryInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutSubcategoryInput | TransactionUpdateWithWhereUniqueWithoutSubcategoryInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutSubcategoryInput | TransactionUpdateManyWithWhereWithoutSubcategoryInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+  }
+
+  export type TransactionUncheckedUpdateManyWithoutSubcategoryNestedInput = {
+    create?: XOR<TransactionCreateWithoutSubcategoryInput, TransactionUncheckedCreateWithoutSubcategoryInput> | TransactionCreateWithoutSubcategoryInput[] | TransactionUncheckedCreateWithoutSubcategoryInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutSubcategoryInput | TransactionCreateOrConnectWithoutSubcategoryInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutSubcategoryInput | TransactionUpsertWithWhereUniqueWithoutSubcategoryInput[]
+    createMany?: TransactionCreateManySubcategoryInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutSubcategoryInput | TransactionUpdateWithWhereUniqueWithoutSubcategoryInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutSubcategoryInput | TransactionUpdateManyWithWhereWithoutSubcategoryInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+  }
+
+  export type SubcategoryCreateNestedOneWithoutTransactionsInput = {
+    create?: XOR<SubcategoryCreateWithoutTransactionsInput, SubcategoryUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: SubcategoryCreateOrConnectWithoutTransactionsInput
+    connect?: SubcategoryWhereUniqueInput
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -13354,6 +13598,16 @@ export namespace Prisma {
 
   export type EnumTransaction_modelFieldUpdateOperationsInput = {
     set?: $Enums.Transaction_model
+  }
+
+  export type SubcategoryUpdateOneWithoutTransactionsNestedInput = {
+    create?: XOR<SubcategoryCreateWithoutTransactionsInput, SubcategoryUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: SubcategoryCreateOrConnectWithoutTransactionsInput
+    upsert?: SubcategoryUpsertWithoutTransactionsInput
+    disconnect?: SubcategoryWhereInput | boolean
+    delete?: SubcategoryWhereInput | boolean
+    connect?: SubcategoryWhereUniqueInput
+    update?: XOR<XOR<SubcategoryUpdateToOneWithWhereWithoutTransactionsInput, SubcategoryUpdateWithoutTransactionsInput>, SubcategoryUncheckedUpdateWithoutTransactionsInput>
   }
 
   export type NestedUuidFilter<$PrismaModel = never> = {
@@ -14313,6 +14567,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     icon?: string | null
+    transactions?: TransactionCreateNestedManyWithoutSubcategoryInput
   }
 
   export type SubcategoryUncheckedCreateWithoutCategoryInput = {
@@ -14320,6 +14575,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     icon?: string | null
+    transactions?: TransactionUncheckedCreateNestedManyWithoutSubcategoryInput
   }
 
   export type SubcategoryCreateOrConnectWithoutCategoryInput = {
@@ -14446,6 +14702,44 @@ export namespace Prisma {
     create: XOR<CategoryCreateWithoutSubcategoriesInput, CategoryUncheckedCreateWithoutSubcategoriesInput>
   }
 
+  export type TransactionCreateWithoutSubcategoryInput = {
+    transaction_id?: string
+    account_id: string
+    title: string
+    note?: string | null
+    amount?: number
+    currency?: string | null
+    date?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string | null
+    model?: $Enums.Transaction_model
+    type: $Enums.Transaction_type
+  }
+
+  export type TransactionUncheckedCreateWithoutSubcategoryInput = {
+    transaction_id?: string
+    account_id: string
+    title: string
+    note?: string | null
+    amount?: number
+    currency?: string | null
+    date?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string | null
+    model?: $Enums.Transaction_model
+    type: $Enums.Transaction_type
+  }
+
+  export type TransactionCreateOrConnectWithoutSubcategoryInput = {
+    where: TransactionWhereUniqueInput
+    create: XOR<TransactionCreateWithoutSubcategoryInput, TransactionUncheckedCreateWithoutSubcategoryInput>
+  }
+
+  export type TransactionCreateManySubcategoryInputEnvelope = {
+    data: TransactionCreateManySubcategoryInput | TransactionCreateManySubcategoryInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CategoryUpsertWithoutSubcategoriesInput = {
     update: XOR<CategoryUpdateWithoutSubcategoriesInput, CategoryUncheckedUpdateWithoutSubcategoriesInput>
     create: XOR<CategoryCreateWithoutSubcategoriesInput, CategoryUncheckedCreateWithoutSubcategoriesInput>
@@ -14472,6 +14766,88 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TransactionUpsertWithWhereUniqueWithoutSubcategoryInput = {
+    where: TransactionWhereUniqueInput
+    update: XOR<TransactionUpdateWithoutSubcategoryInput, TransactionUncheckedUpdateWithoutSubcategoryInput>
+    create: XOR<TransactionCreateWithoutSubcategoryInput, TransactionUncheckedCreateWithoutSubcategoryInput>
+  }
+
+  export type TransactionUpdateWithWhereUniqueWithoutSubcategoryInput = {
+    where: TransactionWhereUniqueInput
+    data: XOR<TransactionUpdateWithoutSubcategoryInput, TransactionUncheckedUpdateWithoutSubcategoryInput>
+  }
+
+  export type TransactionUpdateManyWithWhereWithoutSubcategoryInput = {
+    where: TransactionScalarWhereInput
+    data: XOR<TransactionUpdateManyMutationInput, TransactionUncheckedUpdateManyWithoutSubcategoryInput>
+  }
+
+  export type TransactionScalarWhereInput = {
+    AND?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+    OR?: TransactionScalarWhereInput[]
+    NOT?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+    transaction_id?: UuidFilter<"Transaction"> | string
+    account_id?: UuidFilter<"Transaction"> | string
+    title?: StringFilter<"Transaction"> | string
+    note?: StringNullableFilter<"Transaction"> | string | null
+    subcategory_id?: UuidNullableFilter<"Transaction"> | string | null
+    amount?: FloatFilter<"Transaction"> | number
+    currency?: StringNullableFilter<"Transaction"> | string | null
+    date?: DateTimeFilter<"Transaction"> | Date | string
+    created_at?: DateTimeFilter<"Transaction"> | Date | string
+    updated_at?: DateTimeNullableFilter<"Transaction"> | Date | string | null
+    model?: EnumTransaction_modelFilter<"Transaction"> | $Enums.Transaction_model
+    type?: EnumTransaction_typeFilter<"Transaction"> | $Enums.Transaction_type
+  }
+
+  export type SubcategoryCreateWithoutTransactionsInput = {
+    subcategory_id?: string
+    name: string
+    description?: string | null
+    icon?: string | null
+    category: CategoryCreateNestedOneWithoutSubcategoriesInput
+  }
+
+  export type SubcategoryUncheckedCreateWithoutTransactionsInput = {
+    subcategory_id?: string
+    category_id: string
+    name: string
+    description?: string | null
+    icon?: string | null
+  }
+
+  export type SubcategoryCreateOrConnectWithoutTransactionsInput = {
+    where: SubcategoryWhereUniqueInput
+    create: XOR<SubcategoryCreateWithoutTransactionsInput, SubcategoryUncheckedCreateWithoutTransactionsInput>
+  }
+
+  export type SubcategoryUpsertWithoutTransactionsInput = {
+    update: XOR<SubcategoryUpdateWithoutTransactionsInput, SubcategoryUncheckedUpdateWithoutTransactionsInput>
+    create: XOR<SubcategoryCreateWithoutTransactionsInput, SubcategoryUncheckedCreateWithoutTransactionsInput>
+    where?: SubcategoryWhereInput
+  }
+
+  export type SubcategoryUpdateToOneWithWhereWithoutTransactionsInput = {
+    where?: SubcategoryWhereInput
+    data: XOR<SubcategoryUpdateWithoutTransactionsInput, SubcategoryUncheckedUpdateWithoutTransactionsInput>
+  }
+
+  export type SubcategoryUpdateWithoutTransactionsInput = {
+    subcategory_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: CategoryUpdateOneRequiredWithoutSubcategoriesNestedInput
+  }
+
+  export type SubcategoryUncheckedUpdateWithoutTransactionsInput = {
+    subcategory_id?: StringFieldUpdateOperationsInput | string
+    category_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -14675,6 +15051,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     icon?: NullableStringFieldUpdateOperationsInput | string | null
+    transactions?: TransactionUpdateManyWithoutSubcategoryNestedInput
   }
 
   export type SubcategoryUncheckedUpdateWithoutCategoryInput = {
@@ -14682,6 +15059,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     icon?: NullableStringFieldUpdateOperationsInput | string | null
+    transactions?: TransactionUncheckedUpdateManyWithoutSubcategoryNestedInput
   }
 
   export type SubcategoryUncheckedUpdateManyWithoutCategoryInput = {
@@ -14689,6 +15067,62 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     icon?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TransactionCreateManySubcategoryInput = {
+    transaction_id?: string
+    account_id: string
+    title: string
+    note?: string | null
+    amount?: number
+    currency?: string | null
+    date?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string | null
+    model?: $Enums.Transaction_model
+    type: $Enums.Transaction_type
+  }
+
+  export type TransactionUpdateWithoutSubcategoryInput = {
+    transaction_id?: StringFieldUpdateOperationsInput | string
+    account_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: FloatFieldUpdateOperationsInput | number
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
+    type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
+  }
+
+  export type TransactionUncheckedUpdateWithoutSubcategoryInput = {
+    transaction_id?: StringFieldUpdateOperationsInput | string
+    account_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: FloatFieldUpdateOperationsInput | number
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
+    type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
+  }
+
+  export type TransactionUncheckedUpdateManyWithoutSubcategoryInput = {
+    transaction_id?: StringFieldUpdateOperationsInput | string
+    account_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: FloatFieldUpdateOperationsInput | number
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    model?: EnumTransaction_modelFieldUpdateOperationsInput | $Enums.Transaction_model
+    type?: EnumTransaction_typeFieldUpdateOperationsInput | $Enums.Transaction_type
   }
 
 
